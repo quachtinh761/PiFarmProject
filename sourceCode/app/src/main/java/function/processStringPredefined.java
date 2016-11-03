@@ -1,5 +1,7 @@
 package function;
 
+import java.util.List;
+
 /**
  * Created by vanthi on 10/28/2016.
  */
@@ -53,6 +55,17 @@ public class processStringPredefined {
         for (int i=0;i<field.length;i++){
             p[0] = field[i];
             p[1] = value[i];
+            temp[i] = setStrProcess(p);
+        }
+        return temp;
+    }
+    public static String[] setStrProcess(List<String> field,List<String> value){
+        if (field.size() != value.size()) return null;
+        String[] temp = new String[field.size()];
+        String[] p = new String[2];
+        for (int i=0;i<field.size();i++){
+            p[0] = field.get(i);
+            p[1] = value.get(i);
             temp[i] = setStrProcess(p);
         }
         return temp;
