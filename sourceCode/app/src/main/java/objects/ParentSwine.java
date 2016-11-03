@@ -11,7 +11,7 @@ public class ParentSwine {
      *
      */
     private String ID;
-
+    private Date dateImport;
     /**
      *
      */
@@ -51,6 +51,14 @@ public class ParentSwine {
      *
      */
     private String processID;
+
+    public Date getDateImport() {
+        return dateImport;
+    }
+
+    public void setDateImport(Date dateImport) {
+        this.dateImport = dateImport;
+    }
 
     public ParentSwine(String ID, String earNumber, Date matingDate, String coordinatorID, Date expectedDateOfBirth, Date realDateOfBirth, int timesOfBirth, int numberOfChilds, String processID) {
         this.ID = ID;
