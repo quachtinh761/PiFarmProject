@@ -47,6 +47,17 @@ public class processStringPredefined {
         p+="$";
         return p;
     }
+    public static String setStrProcess(List<String> list){
+        if (list.isEmpty()) return null;
+        String temp = "$";
+        for (String val: list) {
+            if (val!=null) temp = temp+val+"#";
+            else temp += "#";
+        }
+        String p = temp.substring(0,temp.length()-1);
+        p+="$";
+        return p;
+    }
     //convert from array field and array value to array type $field#value$
     public static String[] setStrProcess(String[] field,String[] value){
         if (field.length != value.length) return null;

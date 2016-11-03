@@ -13,41 +13,40 @@ public class ParentProcessObject extends ProcessObject {
 
     //list vaccine is Vaccine Import first and then is vaccine when have child
     public ParentProcessObject(int numberVaccineImport, int numberVaccineWhenHaveChild, Date dateBeginVaccinImport, Date dateBeginVaccineWhenHaveChild,
-                               List<String> vaccineAll,List<String> space) {
+                               List<String> vaccineAll) {
         this.numberVaccineImport = numberVaccineImport;
         this.numberVaccineWhenHaveChild = numberVaccineWhenHaveChild;
         this.dateBeginVaccinImport = dateBeginVaccinImport;
         this.dateBeginVaccineWhenHaveChild = dateBeginVaccineWhenHaveChild;
-        setVaccine(vaccineAll,space);
+        setVaccine(vaccineAll);
     }
     public ParentProcessObject(int numberVaccineImport, int numberVaccineWhenHaveChild, Date dateBeginVaccinImport, Date dateBeginVaccineWhenHaveChild,
-                               String[] vaccineAll,String[] space) {
+                               String[] vaccineAll) {
         this.numberVaccineImport = numberVaccineImport;
         this.numberVaccineWhenHaveChild = numberVaccineWhenHaveChild;
         this.dateBeginVaccinImport = dateBeginVaccinImport;
         this.dateBeginVaccineWhenHaveChild = dateBeginVaccineWhenHaveChild;
         for (int i=0;i<vaccineAll.length;i++){
-            addVaccine(vaccineAll[i],space[i]);
+            addVaccine(vaccineAll[i]);
         }
     }
-    public ParentProcessObject(Date dateBeginVaccinImport, Date dateBeginVaccineWhenHaveChild, List<String> vaccineImport,List<String> spaceImport,
-                               List<String> VaccineWhenHaveChild, List<String> spaceHaveChild) {
+    public ParentProcessObject(Date dateBeginVaccinImport, Date dateBeginVaccineWhenHaveChild, List<String> vaccineImport, List<String> VaccineWhenHaveChild) {
         this.numberVaccineImport = vaccineImport.size();
         this.numberVaccineWhenHaveChild = VaccineWhenHaveChild.size();
         this.dateBeginVaccinImport = dateBeginVaccinImport;
         this.dateBeginVaccineWhenHaveChild = dateBeginVaccineWhenHaveChild;
-        setVaccine(vaccineImport,spaceImport);
-        for (int i=0;i<VaccineWhenHaveChild.size();i++){
-            addVaccine(VaccineWhenHaveChild.get(i),spaceHaveChild.get(i));
+        setVaccine(vaccineImport);
+        for (String p: VaccineWhenHaveChild) {
+            addVaccine(p);
         }
     }
 
-    public void addVaccineImport(String Vaccine,String space){
-        addVaccine(numberVaccineImport-1,Vaccine,space);
+    public void addVaccineImport(String Vaccine){
+        addVaccine(numberVaccineImport-1,Vaccine);
         numberVaccineImport++;
     }
-    public void addVaccineWhenHaveChild(String Vaccine,String space){
-        addVaccine(Vaccine,space);
+    public void addVaccineWhenHaveChild(String Vaccine){
+        addVaccine(Vaccine);
         numberVaccineWhenHaveChild++;
     }
 

@@ -9,25 +9,25 @@ import java.util.List;
 public class ChildProcessObject extends ProcessObject {
     String dateBeginVaccine;
 
-    public ChildProcessObject(String ID,String name,String dateBeginVaccine, List<String> vaccine,List<String> space) {
+    public ChildProcessObject(String ID,String name,String dateBeginVaccine, List<String> vaccine) {
         this.dateBeginVaccine = dateBeginVaccine;
         setID(ID);
         setName(name);
-        setVaccine(vaccine,space);
+        setVaccine(vaccine);
     }
-    public ChildProcessObject(String ID,String name,String dateBeginVaccine, String vaccine,String space) {
+    public ChildProcessObject(String ID,String name,String dateBeginVaccine, String vaccine) {
         this.dateBeginVaccine = dateBeginVaccine;
         setID(ID);
         setName(name);
-        addVaccine(vaccine,space);
+        addVaccine(vaccine);
     }
-    //2arr vaccine and space have same length
-    public ChildProcessObject(String ID,String name,String dateBeginVaccine, String[] vaccine,String[] space) {
+    //
+    public ChildProcessObject(String ID,String name,String dateBeginVaccine, String[] vaccine) {
         this.dateBeginVaccine = dateBeginVaccine;
         setID(ID);
         setName(name);
         for (int i=0;i<vaccine.length;i++){
-            addVaccine(vaccine[i],space[i]);
+            addVaccine(vaccine[i]);
         }
 
     }

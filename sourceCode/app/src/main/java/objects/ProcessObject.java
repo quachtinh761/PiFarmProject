@@ -10,28 +10,22 @@ import function.processStringPredefined;
 
 public abstract class ProcessObject {
     private List<String> IDvaccine;
-    private List<String> spaceVaccine;
     private String ID, Name;
 
-    //return array with $IDVaccine#spaceVaccine$
-    public String[] getVaccine() {
-        return processStringPredefined.setStrProcess(IDvaccine,spaceVaccine);
+    //return array with $IDVaccine1#IDVaccine2$
+    public String getVaccine() {
+        return processStringPredefined.setStrProcess(IDvaccine);
     }
 
-    public void addVaccine(String IDVaccine,String space) {
+    public void addVaccine(String IDVaccine) {
         this.IDvaccine.add(IDVaccine);
-        this.spaceVaccine.add(space);
 
     }
-    public void addVaccine(int i,String IDVaccine,String space) {
+    public void addVaccine(int i,String IDVaccine) {
         this.IDvaccine.add(i,IDVaccine);
-        this.spaceVaccine.add(i,space);
-
     }
-    public void setVaccine(List<String> IDVaccine,List<String> space) {
+    public void setVaccine(List<String> IDVaccine) {
         this.IDvaccine = IDVaccine;
-        this.spaceVaccine = space;
-
     }
 
     public String getID() {
