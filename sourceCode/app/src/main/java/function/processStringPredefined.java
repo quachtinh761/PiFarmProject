@@ -2,6 +2,8 @@ package function;
 
 import java.util.List;
 
+import static android.R.attr.value;
+
 /**
  * Created by vanthi on 10/28/2016.
  */
@@ -10,8 +12,8 @@ import java.util.List;
 */
 public class processStringPredefined {
     //convert from $abc#cde#cdc$ to array String
-    public static String[] getStrProcess(String str) {
-        if (str == null) return null;
+    public static String[] getArrayStr(String str) {
+        if (str.equals("")) return null;
         int m = 1;
         int p = 1;
         for (int i = 0; i < str.length(); i++) {
@@ -33,33 +35,47 @@ public class processStringPredefined {
                 else buf[i] = str.substring(temp[i] + 1, temp[i + 1]);
             }
             return buf;
-        }else return null;
+        } else return null;
     }
+
     //convert from array string to $abc#cde#cdc$
-    public static String setStrProcess(String[] list){
-        if (list == null) return null;
+    public static String getStr(String[] list) {
+        if (list == null) return "";
         String temp = "$";
-        for (String val: list) {
-            if (val!=null) temp = temp+val+"#";
+        for (String val : list) {
+            if (val != null) temp = temp + val + "#";
             else temp += "#";
         }
-        String p = temp.substring(0,temp.length()-1);
-        p+="$";
+        String p = temp.substring(0, temp.length() - 1);
+        p += "$";
         return p;
     }
-    public static String setStrProcess(List<String> list){
-        if (list.isEmpty()) return null;
+
+    //convert from list string to $abc#cde#cdc$
+    public static String getStr(List<String> list) {
+        if (list.isEmpty()) return "";
         String temp = "$";
-        for (String val: list) {
-            if (val!=null) temp = temp+val+"#";
+        for (String val : list) {
+            if (val != null) temp = temp + val + "#";
             else temp += "#";
         }
-        String p = temp.substring(0,temp.length()-1);
-        p+="$";
+        String p = temp.substring(0, temp.length() - 1);
+        p += "$";
         return p;
     }
+
     //convert from array field and array value to array type $field#value$
-    public static String[] setStrProcess(String[] field,String[] value){
+    public static String[] getArrayListStr(List<String[]> data) {
+        if (data.isEmpty()) return null;
+        String[] temp = new String[data.size()];
+        int i = 0;
+        for (String[] var : data) {
+            temp[i] = getStr(var);
+            i++;
+        }
+        return temp;
+    }
+    /*public static String[] setStrProcess(String[] field,String[] value){
         if (field.length != value.length) return null;
         String[] temp = new String[field.length];
         String[] p = new String[2];
@@ -80,5 +96,5 @@ public class processStringPredefined {
             temp[i] = setStrProcess(p);
         }
         return temp;
-    }
+    }*/
 }

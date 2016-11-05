@@ -24,15 +24,14 @@ import static android.R.attr.data;
 /**
  * Created by vanthi on 10/28/2016.
  */
-
+//List<String[]> is multi Arr, String[] must 2 element (field is 1st and value is second)
 public class PostMethod {
     private String[] arrayData;
-    public PostMethod(String url, String[] field, String[] value) {
+    public PostMethod(String url, List<String[]> data) {
         //build array String 0:url, then $field#value$
-        if (field.length != value.length) return;
         this.arrayData[0] = url;
-        String[] p = processStringPredefined.setStrProcess(field,value);
-        for (int i = 0;i<field.length; i++){
+        String[] p = processStringPredefined.getArrayListStr(data);
+        for (int i = 0;i<p.length; i++){
             arrayData[i+1] = p[i];
         }
     }
@@ -55,7 +54,7 @@ public class PostMethod {
                 //add data
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(data.length - 1);
                 for (int i=1;i<data.length;i++){
-                    temp = processStringPredefined.getStrProcess(data[i]);
+                    temp = processStringPredefined.getArrayStr(data[i]);
                     nameValuePairs.add(new BasicNameValuePair(temp[0],temp[1]));
                 }
                 //nameValuePairs.add(new BasicNameValuePair("Key", data[1]));

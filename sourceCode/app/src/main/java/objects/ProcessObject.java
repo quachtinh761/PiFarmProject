@@ -14,7 +14,7 @@ public abstract class ProcessObject {
 
     //return array with $IDVaccine1#IDVaccine2$
     public String getVaccine() {
-        return processStringPredefined.setStrProcess(IDvaccine);
+        return processStringPredefined.getStr(IDvaccine);
     }
 
     public void addVaccine(String IDVaccine) {
