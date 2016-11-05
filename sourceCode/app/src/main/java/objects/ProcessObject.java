@@ -2,7 +2,7 @@ package objects;
 
 import java.util.List;
 
-import function.processStringPredefined;
+import function.StringHanding;
 
 /**
  * Created by vanthi on 11/3/2016.
@@ -14,7 +14,7 @@ public abstract class ProcessObject {
 
     //return array with $IDVaccine1#IDVaccine2$
     public String getVaccine() {
-        return processStringPredefined.getStr(IDvaccine);
+        return StringHanding.getStr(IDvaccine);
     }
 
     public void addVaccine(String IDVaccine) {

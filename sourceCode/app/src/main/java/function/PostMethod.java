@@ -30,7 +30,7 @@ public class PostMethod {
     public PostMethod(String url, List<String[]> data) {
         //build array String 0:url, then $field#value$
         this.arrayData[0] = url;
-        String[] p = processStringPredefined.getArrayListStr(data);
+        String[] p = StringHanding.getArrayListStr(data);
         for (int i = 0;i<p.length; i++){
             arrayData[i+1] = p[i];
         }
@@ -54,7 +54,7 @@ public class PostMethod {
                 //add data
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(data.length - 1);
                 for (int i=1;i<data.length;i++){
-                    temp = processStringPredefined.getArrayStr(data[i]);
+                    temp = StringHanding.getArrayStr(data[i]);
                     nameValuePairs.add(new BasicNameValuePair(temp[0],temp[1]));
                 }
                 //nameValuePairs.add(new BasicNameValuePair("Key", data[1]));

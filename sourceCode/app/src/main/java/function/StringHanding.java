@@ -2,7 +2,6 @@ package function;
 
 import java.util.List;
 
-import static android.R.attr.value;
 
 /**
  * Created by vanthi on 10/28/2016.
@@ -10,7 +9,7 @@ import static android.R.attr.value;
 /* this String is: $abc#cde#cdc$
     This class use for processing type string predefined by GANT
 */
-public class processStringPredefined {
+public class StringHanding {
     //convert from $abc#cde#cdc$ to array String
     public static String[] getArrayStr(String str) {
         if (str.equals("")) return null;
