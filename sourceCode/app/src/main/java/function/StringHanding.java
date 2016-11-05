@@ -10,6 +10,8 @@ import java.util.List;
     This class use for processing type string predefined by GANT
 */
 public class StringHanding {
+
+    private static String listIgnoreChar = "#$'";
     //convert from $abc#cde#cdc$ to array String
     public static String[] getArrayStr(String str) {
         if (str.equals("")) return null;
@@ -96,4 +98,41 @@ public class StringHanding {
         }
         return temp;
     }*/
+
+    //check String method
+
+    //check is valid string: it's String that hasn't special character ($,#,...)
+    public static Boolean isValidString(String s){
+        for (int i=0;i<s.length();i++) {
+            for (int j=0;j<listIgnoreChar.length();j++)
+                if (s.charAt(i) == listIgnoreChar.charAt(j) || s.charAt(i) == 34 || s.charAt(i) == 92) return false;
+        }
+        return true;
+    }
+    //check is valid phone number: phone number must more than 9 char (can start 0 or +(area number))
+    public static Boolean isValidPhone(String phoneNum){
+        if (phoneNum.length() <= 9 ) return false;
+        if (!(phoneNum.startsWith("+") || phoneNum.startsWith("0"))){
+            return false;
+        }
+        for (int i=1;i<phoneNum.length();i++){
+            if (phoneNum.charAt(i) < '0' || phoneNum.charAt(i) > '9') return false;
+        }
+        return true;
+    }
+    //auto fix unvalid string to valid string
+    //exam string is "cddvdv#$" -> "cddvdv"
+    public static String getValidString(String s){
+        if (isValidString(s)) return s;
+        else{
+            for (int i=0;i<s.length();i++) {
+                for (int j=0;j<listIgnoreChar.length();j++)
+                    if (s.charAt(i) == listIgnoreChar.charAt(j) || s.charAt(i) == 34 || s.charAt(i) == 92) {
+                        s = s.substring(0,i) + s.substring(i+1);
+                        break;
+                    }
+            }
+            return s;
+        }
+    }
 }
