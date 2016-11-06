@@ -69,4 +69,17 @@ public class DateHanding {
         SimpleDateFormat sdf = new SimpleDateFormat(dateFromat);
         return sdf.format(d);
     }
+    //return 0 if it equals with each other; return 1 if date 1 is after date 2; return -1 if date2 is after date1; return 3 is can't compare
+    public static int compareDate(Date date1,Date date2){
+        if (date1==null || date2==null) return 3;
+        if (date1.before(date2)) return -1;
+        else if(date1.after(date2)) return 1;
+        else return 0;
+    }
+    public static int comareDate(String date1, String date2) throws ParseException {
+        Date p1,p2;
+        p1 = getDate(date1);
+        p2 = getDate(date2);
+        return compareDate(p1,p2);
+    }
 }
