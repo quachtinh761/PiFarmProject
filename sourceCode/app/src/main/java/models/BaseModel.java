@@ -13,21 +13,23 @@ import java.util.Map;
  */
 public class BaseModel {
     String dbPath = "jdbc:sqlite:" + "/test.db";
-    //Class.forName("org.sqldroid.SQLDroidDriver");
     //getData
     protected Connection conn;
     protected Statement st = null;
     protected ResultSet rs = null;
 
-    public void getConnect(){
+    public boolean getConnect(){
         try{
             Class.forName("org.sqlite.JDBC");
             this.conn = DriverManager.getConnection("jdbc:sqlite:" + this.dbPath);
             this.st = this.conn.createStatement();
+            return true;
         }
         catch(ClassNotFoundException e){
+            return false;
         }
         catch(SQLException e){
+            return false;
         }
     }
 
@@ -80,7 +82,8 @@ public class BaseModel {
     }
 
     /**
-     * return true if tableName existed int database
+     * return true if tableName existed in database
+     * otherwise return false
      **/
     public boolean isTableExist(String tableName) {
         try{
@@ -101,7 +104,9 @@ public class BaseModel {
      * @return boolean
      **/
     public boolean insertTable(String tableName, Map<String, String> params) {
-        //Open connection to write data
+        if (params.isEmpty()){
+            return false;
+        }
         String sql = "INSERT INTO " + tableName.toUpperCase() + "(";
         String key = "", value = "";
         for (Map.Entry<String, String> entry : params.entrySet()) {
@@ -114,14 +119,71 @@ public class BaseModel {
         if (value.endsWith(",")){
             value = value.substring(0, value.length() - 1);
         }
-        if (params.isEmpty()){
-            return false;
-        }
         sql += key + ") VALUES (" + value + ")";
 
         try {
             return st.execute(sql);
         }catch (SQLException e){
+            return false;
+        }
+    }
+
+    /**
+     * Map <String, String> where = new HashMap<String,String>();
+     * where.put("fieldName1","fieldValue1"); //fieldName1 = fieldValue1;
+     * where.put("fieldName2","fieldValue2"); //fieldName2 = fieldValue2;
+     * AND operator
+     * Example sql: DELETE FROM user WHERE username = 'read-only' AND right='4';
+     * @param tableName
+     * @param where
+     * @return boolean
+     **/
+    public boolean deleteRecord(String tableName, Map<String, String> where) {
+        if (where.isEmpty()){
+            return false;
+        }
+        String sql = "DELETE FROM " + tableName.toUpperCase() + " WHERE ";
+        for (Map.Entry<String, String> entry : where.entrySet()) {
+            sql += entry.getKey() + "='" + entry.getValue() + "' AND ";
+        }
+        if (sql.endsWith("AND ")){
+            sql = sql.substring(0, sql.length() - 4);
+        }
+
+        try {
+            return st.execute(sql);
+        }catch (SQLException e){
+            return false;
+        }
+    }
+
+    /**
+     * Map <String, String> params = new HashMap<String,String>();
+     * params.put("fieldName1","fieldValueUpdate1");
+     * params.put("fieldName2","fieldValueUpdate2");
+     * @param tableName
+     * @param params
+     * @param where{"id", "IdToUpdate"}
+     * UPDATE user SET right='1', phone_number = '0123456789' WHERE username= 'admin'
+     * @return boolean
+     **/
+    public boolean updateRecord(String tableName, Map<String, String> params, String[] where){
+        if (params.isEmpty() || where.length != 2){
+            return false;
+        }
+        int id = 0, value = 1;
+        try{
+            String sql = "UPDATE " + tableName.toUpperCase() + " SET ";
+            for (Map.Entry<String, String> entry : params.entrySet()) {
+                sql += entry.getKey() + "='" + entry.getValue() + "',";
+            }
+            if (sql.endsWith(",")){
+                sql = sql.substring(0, sql.length() - 1);
+            }
+            sql += " WHERE " + where[id] + "='" + where[value] + "'";
+            return st.execute(sql);
+        }catch (Exception e){
+            System.out.println(e);
             return false;
         }
     }

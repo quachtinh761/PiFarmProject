@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by Guong on 11/6/2016.
  */
 
-public class userObject {
+public class UserObject {
     private String id;
     private String password;
     private String first_name;
