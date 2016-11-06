@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Pifarm</string>
+    <string name="login_title">Đăng nhập</string>
+    <string name="features_title">Tính năng</string>
+    <string name="name_label">Tên</string>
+    <string name="email_label">Địa Chỉ Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="exampleEmail">Example@gmail.com</string>
+    <string name="forgotPassword">Quên mật khẩu?</string>
+    <string name="textDerector"> Hoặc đăng nhập với</string>
 </resources>
