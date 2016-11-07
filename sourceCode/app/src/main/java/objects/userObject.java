@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by Guong on 11/6/2016.
  */
 
-public class UserObject {
+public class userObject {
     private String id;
     private String password;
     private String first_name;
@@ -15,6 +15,17 @@ public class UserObject {
     private Date birthday_date;
     private String phone_number;
     private String right;
+
+    public userObject(String id, String password, String first_name, String last_name, Date birthday_date, String birthday_string, String phone_number, String right) {
+        this.id = id;
+        this.password = password;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.birthday_string = birthday_string;
+        this.birthday_date = birthday_date;
+        this.phone_number = phone_number;
+        this.right = right;
+    }
 
     public Date getBirthday_date() {
         return birthday_date;
