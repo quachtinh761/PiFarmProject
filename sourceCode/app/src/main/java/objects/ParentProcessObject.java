@@ -30,7 +30,7 @@ public class ParentProcessObject extends ProcessObject {
             addVaccine(vaccineAll[i]);
         }
     }
-    public ParentProcessObject(Date dateBeginVaccinImport, Date dateBeginVaccineWhenHaveChild, List<String> vaccineImport, List<String> VaccineWhenHaveChild) {
+    public ParentProcessObject(List<String> vaccineImport, List<String> VaccineWhenHaveChild,Date dateBeginVaccinImport,Date dateBeginVaccineWhenHaveChild) {
         this.numberVaccineImport = vaccineImport.size();
         this.numberVaccineWhenHaveChild = VaccineWhenHaveChild.size();
         this.dateBeginVaccinImport = dateBeginVaccinImport;

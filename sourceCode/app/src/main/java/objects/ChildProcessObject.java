@@ -32,6 +32,11 @@ public class ChildProcessObject extends ProcessObject {
 
     }
 
+    @Override
+    public void addVaccine(String IDVaccine) {
+        super.addVaccine(IDVaccine);
+    }
+
     public String getDateBeginVaccine() {
         return dateBeginVaccine;
     }

@@ -17,11 +17,11 @@ public abstract class ProcessObject {
         return StringHanding.getStr(IDvaccine);
     }
 
-    public void addVaccine(String IDVaccine) {
+    protected void addVaccine(String IDVaccine) {
         this.IDvaccine.add(IDVaccine);
 
     }
-    public void addVaccine(int i,String IDVaccine) {
+    protected void addVaccine(int i,String IDVaccine) {
         this.IDvaccine.add(i,IDVaccine);
     }
     public void setVaccine(List<String> IDVaccine) {
