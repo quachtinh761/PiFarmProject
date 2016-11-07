@@ -84,30 +84,17 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:inputType="textEmailAddress"
         android:ems="10"
         android:background="@drawable/edit_text"
-        android:textColor="@color/textHint"
-        android:text="@string/exampleEmail"
+        android:textColor="@color/black"
         android:id="@+id/edtMail"
         android:layout_marginBottom="13dp"
         android:layout_above="@+id/txtPassword"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:inputType="text|textPassword"
-        android:ems="10"
-        android:background="@drawable/edit_text"
-        android:textColor="@color/textHint"
-        android:text="@string/password"
-        android:id="@+id/edtPassword"
-        android:layout_marginBottom="27dp"
-        android:layout_above="@+id/btnLogin"
-        android:layout_alignStart="@+id/edtMail" />
+        android:layout_centerHorizontal="true"
+        android:hint="@string/exampleEmail" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -134,4 +121,17 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:inputType="text|textPassword"
+        android:ems="10"
+        android:background="@drawable/edit_text"
+        android:textColor="@color/black"
+        android:id="@+id/edtPassword"
+        android:layout_marginBottom="27dp"
+        android:layout_above="@+id/btnLogin"
+        android:layout_alignStart="@+id/edtMail"
+        android:hint="@string/password" />
 </RelativeLayout>
