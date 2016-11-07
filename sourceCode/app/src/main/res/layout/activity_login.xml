@@ -41,40 +41,6 @@
         android:layout_above="@+id/edtPassword"
         android:layout_alignStart="@+id/edtPassword" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/logo"
-        android:id="@+id/imgLogo"
-        android:layout_marginTop="48dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:background="@drawable/edit_text"
-        android:textColor="@color/textHint"
-        android:text="@string/exampleEmail"
-        android:id="@+id/edtMail"
-        android:layout_marginBottom="35dp"
-        android:layout_above="@+id/txtPassword"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text|textPassword"
-        android:ems="10"
-        android:background="@drawable/edit_text"
-        android:textColor="@color/textHint"
-        android:text="@string/password"
-        android:id="@+id/edtPassword"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/edtMail" />
-
     <TextView
         android:text="@string/email_label"
         android:layout_width="wrap_content"
@@ -83,36 +49,6 @@
         android:id="@+id/txtEmail"
         android:layout_above="@+id/edtMail"
         android:layout_alignStart="@+id/edtMail" />
-
-    <Button
-        android:text="@string/login_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnLogin"
-        android:background="@color/buttonColor"
-        android:textColor="@color/black"
-        android:layout_marginBottom="30dp"
-        android:layout_above="@+id/Line"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/facebook_icon"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/txtPassword"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="39dp"
-        android:id="@+id/ibtnFacebook" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/google_icon"
-        android:layout_alignBottom="@+id/ibtnFacebook"
-        android:layout_toEndOf="@+id/btnLogin"
-        android:layout_marginStart="26dp"
-        android:id="@+id/ibtnGoogle" />
 
     <TextView
         android:text="@string/forgotPassword"
@@ -135,4 +71,67 @@
         android:layout_alignBaseline="@+id/txvForgotPass"
         android:layout_alignBottom="@+id/txvForgotPass"
         android:layout_toEndOf="@+id/imgLogo" />
+
+    <Button
+        android:text="@string/login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLogin"
+        android:background="@color/buttonColor"
+        android:textColor="@color/black"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/Line"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:background="@drawable/edit_text"
+        android:textColor="@color/textHint"
+        android:text="@string/exampleEmail"
+        android:id="@+id/edtMail"
+        android:layout_marginBottom="13dp"
+        android:layout_above="@+id/txtPassword"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:inputType="text|textPassword"
+        android:ems="10"
+        android:background="@drawable/edit_text"
+        android:textColor="@color/textHint"
+        android:text="@string/password"
+        android:id="@+id/edtPassword"
+        android:layout_marginBottom="27dp"
+        android:layout_above="@+id/btnLogin"
+        android:layout_alignStart="@+id/edtMail" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/facebook_icon"
+        android:layout_marginBottom="37dp"
+        android:id="@+id/ibtnFacebook"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/btnLogin" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/google_icon"
+        android:id="@+id/ibtnGoogle"
+        android:layout_below="@+id/txvForgotPass"
+        android:layout_toEndOf="@+id/btnLogin" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logo"
+        android:id="@+id/imgLogo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp" />
 </RelativeLayout>
