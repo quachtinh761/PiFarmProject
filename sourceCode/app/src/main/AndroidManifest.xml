@@ -20,7 +20,9 @@
         <activity android:name=".Login" />
         <activity android:name=".Features" />
         <activity android:name=".FacebookConnector" />
-        <activity android:name=".GoogleConnector"></activity>
+        <activity android:name=".GoogleConnector" />
+        <activity android:name=".ForgotPass" />
+        <activity android:name=".Introduction"></activity>
     </application>
 
 </manifest>
