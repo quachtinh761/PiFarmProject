@@ -28,30 +28,33 @@ public class DateHanding {
             return false;
         }
     }
-    public static Date getDate(String s) throws ParseException {
-        if(isDate(s)){
-            SimpleDateFormat sdf = new SimpleDateFormat(dateFromat);
-            sdf.setLenient(false);
-            Date date = sdf.parse(s);
-            return date;
+    public static Date getDate(String s){
+        try {
+            if (isDate(s)) {
+                SimpleDateFormat sdf = new SimpleDateFormat(dateFromat);
+                sdf.setLenient(false);
+                Date date = sdf.parse(s);
+                return date;
+            } else return null;
         }
-        else return null;
+        catch (ParseException e){
+            return null;
+        }
     }
-    public static Date getDateBefore(String date,int nDay ) throws ParseException {
-        Calendar calendar= Calendar.getInstance();
+    public static Date getDateBefore(String date,int nDay ){
+        Calendar calendar = Calendar.getInstance();
         Date d = getDate(date);
-        if (d!=null){
+        if (d != null) {
             calendar.setTime(d);
-            calendar.add(calendar.DATE,-nDay);
+            calendar.add(calendar.DATE, -nDay);
             Date resultdate = new Date(calendar.getTimeInMillis());
             return resultdate;
-        }
-        else return null;
+        } else return null;
     }
-    public static Date getDateBefore(Date date,int nDay ) throws ParseException {
+    public static Date getDateBefore(Date date,int nDay ){
         return getDateBefore(getDateString(date),nDay);
     }
-    public static Date getDateAfter(String date,int nDay ) throws ParseException {
+    public static Date getDateAfter(String date,int nDay ){
         Calendar calendar= Calendar.getInstance();
         Date d = getDate(date);
         if (d!=null){
@@ -62,7 +65,7 @@ public class DateHanding {
         }
         else return null;
     }
-    public static Date getDateAfter(Date date,int nDay ) throws ParseException {
+    public static Date getDateAfter(Date date,int nDay ){
         return getDateAfter(getDateString(date),nDay);
     }
     public static String getDateString(Date d){
@@ -76,7 +79,7 @@ public class DateHanding {
         else if(date1.after(date2)) return 1;
         else return 0;
     }
-    public static int comareDate(String date1, String date2) throws ParseException {
+    public static int comareDate(String date1, String date2){
         Date p1,p2;
         p1 = getDate(date1);
         p2 = getDate(date2);

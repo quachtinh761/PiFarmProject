@@ -1,12 +1,15 @@
 package objects;
 
+import java.text.ParseException;
 import java.util.Date;
+
+import function.DateHanding;
 
 /**
  * Created by vanthi on 11/1/2016.
  */
 
-public class ParentSwine {
+public class ParentSwineObject {
     /**
      *
      */
@@ -60,7 +63,7 @@ public class ParentSwine {
         this.dateImport = dateImport;
     }
 
-    public ParentSwine(String ID, String earNumber, Date matingDate, String coordinatorID, Date expectedDateOfBirth, Date realDateOfBirth, int timesOfBirth, int numberOfChilds, String processID) {
+    public ParentSwineObject(String ID, String earNumber, Date matingDate, String coordinatorID, Date expectedDateOfBirth, Date realDateOfBirth, int timesOfBirth, int numberOfChilds, String processID) {
         this.ID = ID;
         this.earNumber = earNumber;
         this.matingDate = matingDate;
@@ -72,13 +75,20 @@ public class ParentSwine {
         this.processID = processID;
     }
 
-    public ParentSwine(String coordinatorID, String ID, String processID, int numberOfChilds, int timesOfBirth, Date realDateOfBirth) {
-        this.coordinatorID = coordinatorID;
+    public ParentSwineObject(String ID, String processID,String earNumber,Date dateImport) {
+        this.dateImport = dateImport;
+        this.earNumber = earNumber;
         this.ID = ID;
         this.processID = processID;
-        this.numberOfChilds = numberOfChilds;
-        this.timesOfBirth = timesOfBirth;
-        this.realDateOfBirth = realDateOfBirth;
+    }
+
+    public ParentSwineObject(String ID, String processID,String earNumber,Date dateImport,Date matingDate)  {
+        this.matingDate = matingDate;
+        this.expectedDateOfBirth = DateHanding.getDateAfter(dateImport,115);
+        this.dateImport = dateImport;
+        this.earNumber = earNumber;
+        this.ID = ID;
+        this.processID = processID;
     }
 
     public String getID() {
