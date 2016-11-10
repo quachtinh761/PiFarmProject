@@ -6,10 +6,12 @@
     <color name="red">#ffff0000</color>
     <color name="loginBackground">#4CAF50</color>
     <color name="loginButton">#A1E0A9</color>
+    <color name="loginButtonPressed">#BBBCBC</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="appNameColor">#B8B8B8</color>
     <color name="xanhla">#398E3D</color>
     <color name="textHint">#9ED0A2</color>
     <color name="buttonColor">#D8D8D8</color>
+    <color name="introBackground">#20D2BB</color>
 </resources>

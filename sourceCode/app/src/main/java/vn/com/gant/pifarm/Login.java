@@ -49,7 +49,7 @@ public class Login extends AppCompatActivity {
         etxtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (etxtEmail.hasSelection()){
+                if (hasFocus){
                     showKeyBoard();
                 } else {
                     hideKeyBoard();
@@ -60,7 +60,7 @@ public class Login extends AppCompatActivity {
         etxtPass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (etxtPass.hasSelection()){
+                if ((hasFocus)){
                     showKeyBoard();
                 } else {
                     hideKeyBoard();
