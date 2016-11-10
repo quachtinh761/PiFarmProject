@@ -17,16 +17,16 @@ import android.widget.TextView;
 public class Login extends AppCompatActivity {
 
     public static final String TAG = "LoginMessages";
-    EditText etxtEmail;
-    EditText etxtPass;
-    Button btnLogin;
-    TextView txvForgotPass;
-    ImageButton ibtnFacebook;
-    ImageButton ibtnGoogle;
-    RelativeLayout background;
-    ImageView logo;
-    String userName = "";
-    String pass = "";
+    private EditText etxtEmail;
+    private EditText etxtPass;
+    private Button btnLogin;
+    private TextView txvForgotPass;
+    private ImageButton ibtnFacebook;
+    private ImageButton ibtnGoogle;
+    private RelativeLayout background;
+    private ImageView logo;
+    private String userName = "";
+    private String pass = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

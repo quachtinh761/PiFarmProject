@@ -14,4 +14,16 @@
     <color name="textHint">#9ED0A2</color>
     <color name="buttonColor">#D8D8D8</color>
     <color name="introBackground">#20D2BB</color>
+    <color name="toolbarBackground">#4C4A50</color>
+    <color name="underBorder">#4C4A50</color>
+    <color name="readCardBackground">#F8B098</color>
+    <color name="writeCardBackground">#F2717F</color>
+    <color name="addSwineBackground">#C16C84</color>
+    <color name="vaccineBackground">#6B5B79</color>
+    <color name="reportBackground">#335D7B</color>
+    <color name="findingBackground">#AA5B49</color>
+    <color name="manageStaffBackground">#4B5E73</color>
+    <color name="syncBackground">#8C6450</color>
+    <color name="forumBackground">#B36943</color>
+
 </resources>
