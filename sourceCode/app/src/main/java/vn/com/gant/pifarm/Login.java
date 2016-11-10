@@ -60,7 +60,7 @@ public class Login extends AppCompatActivity {
         etxtPass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if ((hasFocus)){
+                if (hasFocus){
                     showKeyBoard();
                 } else {
                     hideKeyBoard();
@@ -74,8 +74,11 @@ public class Login extends AppCompatActivity {
                 userName = etxtEmail.getText().toString();
                 pass = etxtPass.getText().toString();
                 if (checkLogin(userName, pass)){
+                    SaveSharedPreference.setUserName(Login.this, userName);
                     Intent loginIntent = new Intent(Login.this, Features.class);
                     Login.this.startActivity(loginIntent);
+                    String text = SaveSharedPreference.getUserName(Login.this).toString();
+                    Log.i(TAG, text);
                     Log.i(TAG, "login is true");
                     finish();
                 } else {
@@ -148,5 +151,9 @@ public class Login extends AppCompatActivity {
     public boolean checkLogin(String userName, String pass){
         if ((userName.equals("admin"))&&(pass.equals("123"))) return true;
         else return false;
+    }
+
+    public void saveUserInfoToReference(String userName, String pass){
+
     }
 }

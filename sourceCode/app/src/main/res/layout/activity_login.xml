@@ -93,7 +93,8 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/facebook_icon"
+        android:src="@drawable/facebook_icon"
+        android:background="@drawable/facebook_icon"
         android:layout_marginBottom="37dp"
         android:id="@+id/ibtnFacebook"
         android:layout_alignParentBottom="true"
@@ -102,8 +103,9 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/google_icon"
+        android:src="@drawable/google_icon"
         android:id="@+id/ibtnGoogle"
+        android:background="@color/loginBackground"
         android:layout_below="@+id/txvForgotPass"
         android:layout_toEndOf="@+id/btnLogin" />
 

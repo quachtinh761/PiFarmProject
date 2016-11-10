@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
 //        Log.i(TAG,"user name:");
 
+//        SaveSharedPreference.clearUserName(MainActivity.this);
+
         if(SaveSharedPreference.getUserName(MainActivity.this).length() == 0){
             // create Intent
             Intent mainIntent = new Intent(MainActivity.this, Login.class);
