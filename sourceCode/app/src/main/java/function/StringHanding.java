@@ -1,5 +1,6 @@
 package function;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -32,7 +33,7 @@ public class StringHanding {
                 }
             }
             for (int i = 0; i < p; i++) {
-                if (temp[i] + 1 == temp[i + 1]) buf[i] = null;
+                if (temp[i] + 1 == temp[i + 1]) buf[i] = "";
                 else buf[i] = str.substring(temp[i] + 1, temp[i + 1]);
             }
             return buf;
@@ -44,7 +45,7 @@ public class StringHanding {
         if (list == null) return "";
         String temp = "$";
         for (String val : list) {
-            if (val != null) temp = temp + val + "#";
+            if (val != "") temp = temp + val + "#";
             else temp += "#";
         }
         String p = temp.substring(0, temp.length() - 1);
@@ -57,7 +58,7 @@ public class StringHanding {
         if (list.isEmpty()) return "";
         String temp = "$";
         for (String val : list) {
-            if (val != null) temp = temp + val + "#";
+            if (val != "") temp = temp + val + "#";
             else temp += "#";
         }
         String p = temp.substring(0, temp.length() - 1);
@@ -134,5 +135,63 @@ public class StringHanding {
             }
             return s;
         }
+    }
+
+    //you hava data $dfd#sdfd#dsfd$ you can add to this data some value
+    // exam: you can add abc to $dfd#sdfd#dsfd$ -> $dfd#sdfd#dsfd#abc$
+    //if data is null ("") this method will create for you data type $dataadd$
+    public static String add(String data,String dataNeedAdd){
+        if (data.equals("")) {
+            data = "$" + dataNeedAdd +"$";
+            return data;
+        }
+        if(data.equals("$$")){
+            data = "$#" + dataNeedAdd +"$";
+            return data;
+        }
+        String temp = data.substring(0,data.length()-1);
+        temp = temp + "#" + dataNeedAdd + "$";
+        return temp;
+    }
+    //get size data: $fsdf#adfd#dsd$ -> 3
+    // $Wsdd#$ -> 2
+    //$$-> 1 (have value but value is null
+    //"" ->0
+    public static int size(String data){
+        int count = 0;
+        if (data.startsWith("$") && data.endsWith("$")) {
+            for (int i = 0; i < data.length(); i++) {
+                if (data.charAt(i) == '#') count++;
+            }
+            count++;
+        }
+        return count;
+    }
+
+    //get data at index
+    public static String getAt(String data,int index){
+        int count = 0;
+        List<Integer> indexStart = new ArrayList<Integer>();
+        indexStart.add(1);
+        if (data.startsWith("$") && data.endsWith("$")) {
+            for (int i = 0; i < data.length(); i++) {
+                if (data.charAt(i) == '#') {
+                    count++;
+                    indexStart.add(i+1);
+                }
+            }
+            count++;
+        }
+        indexStart.add(data.length());
+        if (index < 0 || index > count-1 ) return "";
+        String temp = data.substring(indexStart.get(index),indexStart.get(index+1)-1);
+        return temp;
+    }
+
+    public static String getFirst(String data){
+        return getAt(data,0);
+    }
+    public static String getLast(String data){
+        return getAt(data,size(data)-1);
     }
 }

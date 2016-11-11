@@ -10,50 +10,26 @@ import function.DateHanding;
  */
 
 public class ParentSwineObject {
-    /**
-     *
-     */
+
     private String ID;
     private Date dateImport;
-    /**
-     *
-     */
     private String earNumber;
-
-    /**
-     *
-     */
     private Date matingDate;
-
-    /**
-     *
-     */
     private String coordinatorID;
-
-    /**
-     *
-     */
     private Date expectedDateOfBirth;
-
-    /**
-     *
-     */
     private Date realDateOfBirth;
-
-    /**
-     *
-     */
     private int timesOfBirth;
-
-    /**
-     *
-     */
     private int numberOfChilds;
-
-    /**
-     *
-     */
     private String processID;
+    private Date firstVaccineDate;
+    private String lsGOAT;
+
+    public Date getFirstVaccineDate() {
+        return firstVaccineDate;
+    }
+    public void setFirstVaccineDate(Date firstVaccineDate) {
+        this.firstVaccineDate = firstVaccineDate;
+    }
 
     public Date getDateImport() {
         return dateImport;
@@ -89,6 +65,14 @@ public class ParentSwineObject {
         this.earNumber = earNumber;
         this.ID = ID;
         this.processID = processID;
+    }
+
+    public String getLsGOAT() {
+        return lsGOAT;
+    }
+
+    public void setLsGOAT(String lsGOAT) {
+        this.lsGOAT = lsGOAT;
     }
 
     public String getID() {
