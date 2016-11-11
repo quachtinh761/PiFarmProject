@@ -187,4 +187,14 @@ public class BaseModel {
             return false;
         }
     }
+
+    public ResultSet search(String tableName,String fieldName,String value){
+        try {
+            String sql = "SELECT * FROM " + tableName.toUpperCase() + " WHERE " + fieldName + " = " + value;
+            return st.executeQuery(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

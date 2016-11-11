@@ -19,39 +19,29 @@ public class ParentSwineObject {
     private Date expectedDateOfBirth;
     private Date realDateOfBirth;
     private int timesOfBirth;
-    private int numberOfChilds;
+    private int totalChilds;
     private String processID;
     private Date firstVaccineDate;
     private String lsGOAT;
+    private int numberChildsDie;
 
-    public Date getFirstVaccineDate() {
-        return firstVaccineDate;
-    }
-    public void setFirstVaccineDate(Date firstVaccineDate) {
-        this.firstVaccineDate = firstVaccineDate;
-    }
-
-    public Date getDateImport() {
-        return dateImport;
-    }
-
-    public void setDateImport(Date dateImport) {
-        this.dateImport = dateImport;
-    }
-
-    public ParentSwineObject(String ID, String earNumber, Date matingDate, String coordinatorID, Date expectedDateOfBirth, Date realDateOfBirth, int timesOfBirth, int numberOfChilds, String processID) {
+    public ParentSwineObject(String ID, Date dateImport, String earNumber, Date matingDate, String coordinatorID, Date realDateOfBirth, int timesOfBirth, int totalChilds, String processID, Date firstVaccineDate, String lsGOAT, int numberChildsDie, Date expectedDateOfBirth) {
         this.ID = ID;
+        this.dateImport = dateImport;
         this.earNumber = earNumber;
         this.matingDate = matingDate;
         this.coordinatorID = coordinatorID;
-        this.expectedDateOfBirth = expectedDateOfBirth;
         this.realDateOfBirth = realDateOfBirth;
         this.timesOfBirth = timesOfBirth;
-        this.numberOfChilds = numberOfChilds;
+        this.totalChilds = totalChilds;
         this.processID = processID;
+        this.firstVaccineDate = firstVaccineDate;
+        this.lsGOAT = lsGOAT;
+        this.numberChildsDie = numberChildsDie;
+        this.expectedDateOfBirth = expectedDateOfBirth;
     }
 
-    public ParentSwineObject(String ID, String processID,String earNumber,Date dateImport) {
+    public ParentSwineObject(String ID, String processID, String earNumber, Date dateImport) {
         this.dateImport = dateImport;
         this.earNumber = earNumber;
         this.ID = ID;
@@ -67,20 +57,20 @@ public class ParentSwineObject {
         this.processID = processID;
     }
 
-    public String getLsGOAT() {
-        return lsGOAT;
-    }
-
-    public void setLsGOAT(String lsGOAT) {
-        this.lsGOAT = lsGOAT;
-    }
-
     public String getID() {
         return ID;
     }
 
     public void setID(String ID) {
         this.ID = ID;
+    }
+
+    public Date getDateImport() {
+        return dateImport;
+    }
+
+    public void setDateImport(Date dateImport) {
+        this.dateImport = dateImport;
     }
 
     public String getEarNumber() {
@@ -131,12 +121,12 @@ public class ParentSwineObject {
         this.timesOfBirth = timesOfBirth;
     }
 
-    public int getNumberOfChilds() {
-        return numberOfChilds;
+    public int getTotalChilds() {
+        return totalChilds;
     }
 
-    public void setNumberOfChilds(int numberOfChilds) {
-        this.numberOfChilds = numberOfChilds;
+    public void setTotalChilds(int totalChilds) {
+        this.totalChilds = totalChilds;
     }
 
     public String getProcessID() {
@@ -145,5 +135,29 @@ public class ParentSwineObject {
 
     public void setProcessID(String processID) {
         this.processID = processID;
+    }
+
+    public Date getFirstVaccineDate() {
+        return firstVaccineDate;
+    }
+
+    public void setFirstVaccineDate(Date firstVaccineDate) {
+        this.firstVaccineDate = firstVaccineDate;
+    }
+
+    public String getLsGOAT() {
+        return lsGOAT;
+    }
+
+    public void setLsGOAT(String lsGOAT) {
+        this.lsGOAT = lsGOAT;
+    }
+
+    public int getNumberChildsDie() {
+        return numberChildsDie;
+    }
+
+    public void setNumberChildsDie(int numberChildsDie) {
+        this.numberChildsDie = numberChildsDie;
     }
 }

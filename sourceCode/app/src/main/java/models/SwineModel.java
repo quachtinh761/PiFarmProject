@@ -1,11 +1,13 @@
 package models;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import function.DateHanding;
-import function.IntergerHanding;
+import function.StringHanding;
 import objects.ParentSwineObject;
 
 /**
@@ -86,9 +88,13 @@ public class SwineModel {
         map.put("inport_date", DateHanding.getDateString(parentSwineObject.getDateImport()));
         map.put("first_vaccine_date", DateHanding.getDateString(parentSwineObject.getFirstVaccineDate()));
         map.put("coordination_date",DateHanding.getDateString(parentSwineObject.getMatingDate()));
-        map.put("num_of_goat", String.valueOf(parentSwineObject.getNumberOfChilds()));
+        map.put("num_of_goat", String.valueOf(parentSwineObject.getTotalChilds()));
 
-        //Thiếu list_goat cần cập nhật function String Handing
+        String list_goat = "";
+        String dataInList = StringHanding.add(list_goat,StringHanding.parseTwoNumber(parentSwineObject.getTotalChilds())+
+                            StringHanding.parseTwoNumber(parentSwineObject.getNumberChildsDie())+parentSwineObject.getRealDateOfBirth());
+        list_goat = StringHanding.add(list_goat,dataInList);
+        map.put("list_goat",list_goat);
 
         map.put("IDProcess" , parentSwineObject.getProcessID());
         map.put("coordinatorID", parentSwineObject.getCoordinatorID());
@@ -96,14 +102,17 @@ public class SwineModel {
         map.put("earNumber", parentSwineObject.getEarNumber());
         return map;
     }
+
     public void add(ParentSwineObject paSwineOb){
         bsmod.insertTable(tableName,makeMapToAdd(paSwineOb));
     }
+
     public void remove(ParentSwineObject parentSwineObject){
         Map<String, String> map = new HashMap<String,String>();
         map.put("id",parentSwineObject.getID());
         bsmod.deleteRecord(tableName,map);
     }
+
     public void remove(String id){
         Map<String, String> map = new HashMap<String,String>();
         map.put("id",id);
@@ -133,5 +142,37 @@ public class SwineModel {
             map.put(listFieldArr[var.getKey()],var.getValue());
         }
         bsmod.updateRecord(tableName,map,lsID);
+    }
+
+    public ParentSwineObject read(String id){
+        ResultSet rs = bsmod.search(tableName,"id",id);
+        if (rs == null) return null;
+        else {
+            //listFieldArr = {"id","inport_date","first_vaccine_date","coordination_date",
+             //       "num_of_goat","list_goat","IDProcess","coordinatorID","realDateOfBirth","earNumber"};
+            /*private String ID;
+     private Date dateImport;               1
+    private String earNumber;
+    private Date matingDate;
+    private String coordinatorID;               3
+    private Date expectedDateOfBirth;
+    private Date realDateOfBirth;
+    private int timesOfBirth;
+    private int totalChilds;                    4
+    private String processID;                   6
+    private Date firstVaccineDate;              2
+    private String lsGOAT;                      5
+    private int numberChildsDie;*/
+            try {
+                String[] ls = new String[listFieldArr.length - 1];
+                for (int i = 0; i < listFieldArr.length -1; i++){
+                    ls[i] = rs.getString(listFieldArr[i+1]);
+                }
+                return new ParentSwineObject(id,)
+            }
+            catch (SQLException e){
+
+            }
+        }
     }
 }
