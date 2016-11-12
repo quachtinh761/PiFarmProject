@@ -194,4 +194,13 @@ public class StringHanding {
     public static String getLast(String data){
         return getAt(data,size(data)-1);
     }
+
+    //return 2number string (use for number swineChild)
+    public static String parseTwoNumber(int i){
+        if ( i < 0 || i > 99 ){
+            return "";
+        }
+        else if (i < 10) return "0" + String.valueOf(i);
+        else return String.valueOf(i);
+    }
 }
