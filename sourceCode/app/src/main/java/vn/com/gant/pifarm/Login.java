@@ -50,8 +50,12 @@ public class Login extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus){
+                    etxtEmail.setHint("");
                     showKeyBoard();
                 } else {
+                    if(etxtEmail.getText().length()==0){
+                        etxtEmail.setHint(R.string.exampleEmail);
+                    }
                     hideKeyBoard();
                 }
             }
@@ -61,8 +65,12 @@ public class Login extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus){
+                    etxtPass.setHint("");
                     showKeyBoard();
                 } else {
+                    if(etxtPass.getText().length()==0){
+                        etxtPass.setHint(R.string.password);
+                    }
                     hideKeyBoard();
                 }
             }
