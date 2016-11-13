@@ -45,11 +45,11 @@ public class BaseModel extends SQLiteOpenHelper{
      * Map <String, String> params = new HashMap<String,String>();
      * params.put("fieldName1","fieldValue1");
      * params.put("fieldName2","fieldValue2");
-     * @param tableName
-     * @param params
+     * @param tableName : name of table
+     * @param params : insert values
      * @return boolean
      **/
-    public long insert(String tableName, Map<String, String> params){
+    protected long insert(String tableName, Map<String, String> params){
         ContentValues values = new ContentValues();
         for (Map.Entry<String, String> entry : params.entrySet()) {
             values.put(entry.getKey(), entry.getValue());
@@ -66,11 +66,11 @@ public class BaseModel extends SQLiteOpenHelper{
      * params.put("fieldName2","filedType2 (not null)");
      * @return boolean
      **/
-    public boolean createTable(String tableName, List< String[] > params){
+    protected boolean createTable(String tableName, List< String[] > params){
         int name = 0, type = 1;
         try {
             String CREATE_TABLE = "";
-            if ( this.isTableExist(tableName).equals("TRUE") ){
+            if ( this.isTableExist(tableName) ){
                 return true;
             }
             CREATE_TABLE += "CREATE TABLE " + tableName.toUpperCase() + "(";
@@ -94,7 +94,7 @@ public class BaseModel extends SQLiteOpenHelper{
      * return true if tableName existed in database
      * otherwise return false
      **/
-    protected boolean isTableExist1(String tableName) {
+    protected boolean isTableExist(String tableName) {
         try {
             rs = db.query(tableName, new String[]{"*"}, "1=?", new String[]{"1"}, null, null, null);
             return rs.getCount() > 0;
@@ -108,20 +108,73 @@ public class BaseModel extends SQLiteOpenHelper{
     }
 
     /**
-     * return true if tableName existed in database
-     * otherwise return false
+     * Map <String, String> where = new HashMap<String,String>();
+     * where.put("fieldName1","fieldValue1"); //fieldName1 = fieldValue1;
+     * where.put("fieldName2","fieldValue2"); //fieldName2 = fieldValue2;
+     * AND operator
+     * Example sql: DELETE FROM user WHERE username = 'read-only' AND right='4';
+     * @param tableName : String
+     * @param where : Map<String, String>
+     * @return boolean
      **/
-    protected String isTableExist(String tableName) {
-        try {
-            rs = db.query(tableName, new String[]{"*"}, "1=?", new String[]{"1"}, null, null, null);
-            return rs.toString();
-        }catch (SQLException e){
-            return e.getMessage();
+    protected boolean deleteRecord(String tableName, Map<String, String> where) {
+        if (where.isEmpty()){
+            return false;
         }
-        /*OR
-        **String sql = "SELECT * FROM " + tableName.toUpperCase() + " WHERE 1 = 1";
-        **db.rawQuery(sql, null);
-        **/
+        String whereClause = "";
+        String[] whereArg = new String[where.size()];
+        int i = 0;
+        for (Map.Entry<String, String> entry : where.entrySet()) {
+            whereClause += entry.getKey() + "=? AND ";
+            whereArg[i++] = entry.getValue();
+        }
+        if (whereClause.endsWith("AND ")){
+            whereClause = whereClause.substring(0, whereClause.length() - 4);
+        }
+
+        try {
+            return db.delete(tableName, whereClause, whereArg) == 1;
+        }catch (SQLException e){
+            return false;
+        }
+    }
+
+    /**
+     * Map <String, String> params = new HashMap<String,String>();
+     * params.put("fieldName1","fieldValueUpdate1");
+     * params.put("fieldName2","fieldValueUpdate2");
+     * @param tableName : String
+     * @param params : Map<String, String>
+     * @param where : Map<String, String>
+     * UPDATE user SET right='1', phone_number = '0123456789' WHERE username= 'admin'
+     * @return boolean
+     **/
+    protected boolean updateRecord(String tableName, Map<String, String> params, Map<String, String> where){
+        if (params.isEmpty() || where.size() != 2){
+            return false;
+        }
+        ContentValues values = new ContentValues();
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            values.put(entry.getKey(), entry.getValue());
+        }
+
+        String whereClause = "";
+        String[] whereArg = new String[where.size()];
+        int i = 0;
+        for (Map.Entry<String, String> entry : where.entrySet()) {
+            whereClause += entry.getKey() + "=? AND ";
+            whereArg[i++] = entry.getValue();
+        }
+        if (whereClause.endsWith("AND ")){
+            whereClause = whereClause.substring(0, whereClause.length() - 4);
+        }
+
+        try{
+            return db.update(tableName, values, whereClause, whereArg) == 1;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
     }
 
     /**
@@ -132,7 +185,7 @@ public class BaseModel extends SQLiteOpenHelper{
      * String groupBy = null;
      * String orderBy = "username";
      **/
-    protected List<String[]> searchDataByConditions1(String tableName,
+    protected List<String[]> searchDataByConditions(String tableName,
                                                  String[] values,
                                                  String whereClause,
                                                  String[] whereArgs,
@@ -172,45 +225,7 @@ public class BaseModel extends SQLiteOpenHelper{
         }
     }
 
-    protected String searchDataByConditions(String tableName,
-                                                 String[] values,
-                                                 String whereClause,
-                                                 String[] whereArgs,
-                                                 String groupBy,
-                                                 String having,
-                                                 String orderBy){
-
-        if (tableName.equals("") || values.length == 0) return null;
-
-        if (groupBy != null && groupBy.equals("")){
-            groupBy = null;
-        }
-        if (having != null && having.equals("")){
-            having = null;
-        }
-        if (orderBy != null && orderBy.equals("")){
-            orderBy = null;
-        }
-        try {
-            rs = db.query(tableName, values, whereClause, whereArgs, groupBy, having, orderBy);
-            List<String[]> data = new ArrayList<>();
-            if (rs.moveToFirst()) {
-                int col = rs.getColumnCount();
-                do {
-                    String[] row = new String[col];
-                    for (int i = 0; i < col; i++){
-                        row[i] = rs.getString(i);
-                    }
-                    data.add(row);
-                } while (rs.moveToNext());
-            }
-
-            rs.close();
-            return "Success";
-            //return data;
-        } catch (SQLException e) {
-            return e.getMessage();
-        }
+    protected Cursor customizeSQL(String sql){
+        return db.rawQuery(sql, null, null);
     }
-
 }

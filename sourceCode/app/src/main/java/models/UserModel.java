@@ -28,13 +28,13 @@ public class UserModel extends BaseModel{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    public String getUserByUserName(String username){
-        String conditions = "username = ?";
-
-        return this.searchDataByConditions(tableName, new String[]{"*"}, conditions, null, null, null, null);
+    public List<String[]> getUserByUserName(String username){
+        String whereClause = "username = ?";
+        String[] whereArgs = new String[]{username};
+        return this.searchDataByConditions(tableName, new String[]{"*"}, whereClause, whereArgs, null, null, null);
     }
 
-    public String isTableExist(){
+    public boolean isTableExist(){
         return this.isTableExist(this.tableName);
     }
 
