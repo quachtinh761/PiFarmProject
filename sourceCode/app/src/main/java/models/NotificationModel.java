@@ -1,5 +1,8 @@
 package models;
 
+import android.content.Context;
+
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,16 +14,24 @@ import objects.NotificationObject;
 public class NotificationModel extends BaseModel {
     private String tableName = "NOTIFICATION";
     private List<String []> params;
-    private static String[] listFieldArr = {"Date","Notification"};
+    private static String[] listField = {"Date","Notification"};
 
     private void makeparams(){
         String[] p = new String[2];
-        p[0] = listFieldArr[0];
+        p[0] = listField[0];
         p[1] = "TEXT(10) NOT NULL";
         params.add(p);
-        p[0] = listFieldArr[1];
+        p[0] = listField[1];
         p[1] = "TEXT(50) NOT NULL";
         params.add(p);
+    }
+
+    public NotificationModel(Context context) {
+        super(context);
+        if (!this.isTableExist(tableName)){
+            makeparams();
+            this.createTable(tableName,params);
+        }
     }
     /*
     * @param params
@@ -28,21 +39,24 @@ public class NotificationModel extends BaseModel {
      * params.put("fieldName1","filedType1(primary key if needed)");
      * params.put("fieldName2","filedType2 (not null)");
      */
-    public NotificationModel() {
-        if (!this.isTableExist(tableName)){
-            makeparams();
-            this.createTable(tableName,params);
-        }
-    }
 
     private Map<String, String> makeMap(NotificationObject notificationObject){
         Map<String, String> map = new HashMap<String, String>();
-        map.put(listFieldArr[0],DateHanding.getDateString(notificationObject.getDate()));
-        map.put(listFieldArr[1],notificationObject.getNotification());
+        map.put(listField[0],DateHanding.getDateString(notificationObject.getDate()));
+        map.put(listField[1],notificationObject.getNotification());
         return map;
     }
-    public void add(NotificationModel notificationModel){
-        this.insertTable(tableName,makeMap(notificationModel));
+    public void add(NotificationObject notificationObject){
+        this.insert(tableName,makeMap(notificationObject));
+    }
+
+    public void remove(List<NotificationObject> notificationObjects){
+        Map<String, String> map = new HashMap<String, String>();
+        for (NotificationObject var : notificationObjects) {
+            map.put(listField[0],DateHanding.getDateString( var.getDate()));
+            this.deleteRecord(tableName, map);
+            map.clear();
+        }
     }
 
 }
