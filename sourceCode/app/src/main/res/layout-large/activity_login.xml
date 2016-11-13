@@ -26,7 +26,7 @@
     <TextView
         android:text="@string/forgotPassword"
         android:textColor="@color/red"
-        android:textSize="24sp"
+        android:textSize="38sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -38,6 +38,7 @@
 
     <TextView
         android:text="@string/textDerector"
+        android:textSize="28sp"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,63 +48,65 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/google_icon"
-        android:id="@+id/ibtnGoogle"
-        android:background="@color/loginBackground"
-        android:layout_marginStart="19dp"
-        android:layout_alignTop="@+id/ibtnFacebook"
-        android:layout_alignStart="@+id/txvConnectDirector" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/facebook_icon"
-        android:background="@drawable/facebook_icon"
-        android:layout_marginBottom="26dp"
-        android:id="@+id/ibtnFacebook"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/btnLogin"
-        android:layout_marginStart="37dp" />
-
-    <Button
-        android:text="@string/login_title"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnLogin"
-        android:background="@drawable/button"
-        android:textColor="@color/textLoginButton"
-        android:layout_marginBottom="32dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:layout_above="@+id/Line"
-        android:layout_alignStart="@+id/edtPassword" />
-
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         app:srcCompat="@drawable/logo"
         android:id="@+id/imgLogo"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp" />
 
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/ibtnGoogle"
+        android:background="@drawable/google_icon"
+        android:layout_below="@+id/txvForgotPass"
+        android:layout_alignStart="@+id/txvConnectDirector"
+        android:layout_marginStart="54dp" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/facebook_icon"
+        android:layout_marginBottom="47dp"
+        android:id="@+id/ibtnFacebook"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/txvForgotPass"
+        android:layout_marginEnd="72dp" />
+
+    <Button
+        android:text="@string/login_title"
+        android:textSize="32sp"
+        android:layout_width="400dp"
+        android:layout_height="80dp"
+        android:id="@+id/btnLogin"
+        android:background="@drawable/button"
+        android:textColor="@color/textLoginButton"
+        android:layout_marginBottom="45dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_above="@+id/Line"
+        android:layout_centerHorizontal="true" />
+
     <EditText
-        android:layout_width="300dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
+        android:textSize="30sp"
         android:inputType="text|textPassword"
         android:ems="10"
         android:focusableInTouchMode="true"
         android:textColor="@color/black"
         android:id="@+id/edtPassword"
         android:hint="@string/password"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/edtMail" />
+        android:layout_above="@+id/btnLogin"
+        android:layout_alignStart="@+id/btnLogin"
+        android:layout_marginBottom="61dp" />
 
     <EditText
-        android:layout_width="300dp"
+        android:layout_width="400dp"
+        android:textSize="30sp"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
@@ -112,5 +115,6 @@
         android:focusableInTouchMode="true"
         android:hint="@string/exampleEmail"
         android:layout_above="@+id/edtPassword"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/edtPassword"
+        android:layout_marginBottom="36dp" />
 </RelativeLayout>
