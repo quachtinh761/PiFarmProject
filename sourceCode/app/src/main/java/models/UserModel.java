@@ -1,4 +1,4 @@
-package vn.com.gant.pifarm.models;
+package models;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import models.BaseModel;
 
 /**
  * Created by Nguyen Van Tinh on 06/11/2016.

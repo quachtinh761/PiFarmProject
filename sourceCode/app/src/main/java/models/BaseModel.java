@@ -1,4 +1,4 @@
-package vn.com.gant.pifarm.models;
+package models;
 
 import android.content.ContentValues;
 import android.content.Context;
