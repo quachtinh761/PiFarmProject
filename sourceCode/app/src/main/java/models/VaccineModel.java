@@ -4,10 +4,12 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import function.DateHanding;
+import objects.ParentSwineObject;
 import objects.VaccineObject;
 
 /**
@@ -118,4 +120,14 @@ public class VaccineModel extends BaseModel{
             where.clear();
         }
     }
+    //num is index of listField = {"ID","name","indication","dose", "insertedBy","updatedBy","insertedDate","updatedDate"};
+    public List<VaccineObject> search(String[] needSearch,int num){
+        List<String []> buff = searchDataByConditions(tableName,listField,listField[num],needSearch,"","","");
+        List<VaccineObject> p = new LinkedList<VaccineObject>();
+        for (String[] var: buff) {
+            p.add(new VaccineObject(var[0], var[1],var[2],var[3],var[4], var[5],DateHanding.getDate(var[6]),DateHanding.getDate(var[7])));
+        }
+        return p;
+    }
+
 }

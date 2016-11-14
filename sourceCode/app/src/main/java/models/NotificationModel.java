@@ -4,11 +4,14 @@ import android.content.Context;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import function.DateHanding;
+import function.IntergerHanding;
 import objects.NotificationObject;
+import objects.ParentProcessObject;
 
 
 public class NotificationModel extends BaseModel {
@@ -57,6 +60,21 @@ public class NotificationModel extends BaseModel {
             this.deleteRecord(tableName, map);
             map.clear();
         }
+    }
+    public List<NotificationObject> search(String[] date){
+        List<String []> buff = searchDataByConditions(tableName,listField,listField[0],date,"","","");
+        List<NotificationObject> p = new LinkedList<NotificationObject>();
+        for (String[] var: buff) {
+            p.add(new NotificationObject(DateHanding.getDate(var[0]),var[1]));
+        }
+        return p;
+    }
+    public List<NotificationObject> search(Date[] date){
+        String[] lsDate = new String[date.length];
+        for (int i=0; i < date.length; i++){
+            lsDate[i] = DateHanding.getDateString(date[i]);
+        }
+        return  search(lsDate);
     }
 
 }

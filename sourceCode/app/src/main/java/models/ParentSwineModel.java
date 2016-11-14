@@ -4,11 +4,14 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import function.DateHanding;
+import function.IntergerHanding;
 import function.StringHanding;
+import objects.ChildProcessObject;
 import objects.ParentProcessObject;
 import objects.ParentSwineObject;
 
@@ -128,5 +131,15 @@ public class ParentSwineModel extends BaseModel{
             this.updateRecord(tableName,makeMap(var),where);
             where.clear();
         }
+    }
+    //num is index of listField
+    public List<ParentSwineObject> search(String[] needSearch,int num){
+        List<String []> buff = searchDataByConditions(tableName,listField,listField[num],needSearch,"","","");
+        List<ParentSwineObject> p = new LinkedList<ParentSwineObject>();
+        for (String[] var: buff) {
+            p.add(new ParentSwineObject(var[0], DateHanding.getDate(var[1]) ,var[2],DateHanding.getDate(var[3]),var[4],
+                    DateHanding.getDateAfter(DateHanding.getDate(var[3]),115),var[5],var[6],var[7],var[8]));
+        }
+        return p;
     }
 }

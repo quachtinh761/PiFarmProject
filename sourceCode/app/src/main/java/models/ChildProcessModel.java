@@ -5,9 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import function.IntergerHanding;
 import function.StringHanding;
 import objects.ChildProcessObject;
 import objects.ParentProcessObject;
@@ -106,5 +108,24 @@ public class ChildProcessModel extends BaseModel{
             where.clear();
         }
 
+    }
+
+    private Map<String,Integer> makeMap(String data){
+        String[] temp = StringHanding.getArrayStr(data);
+        Map<String,Integer> ret = new HashMap<String, Integer>();
+        for (int i = 0; i < temp.length; i++){
+            ret.put(temp[i], IntergerHanding.getInterger(temp[i+1]));
+            i++;
+        }
+        return ret;
+    }
+    //num is index of listField
+    public List<ChildProcessObject> search(String[] needSearch,int num){
+        List<String []> buff = searchDataByConditions(tableName,listField,listField[num],needSearch,"","","");
+        List<ChildProcessObject> p = new LinkedList<ChildProcessObject>();
+        for (String[] var: buff) {
+            p.add(new ChildProcessObject(var[0], IntergerHanding.getInterger(var[1]),makeMap(var[2])));
+        }
+        return p;
     }
 }
