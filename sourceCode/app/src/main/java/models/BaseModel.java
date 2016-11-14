@@ -118,7 +118,7 @@ public class BaseModel extends SQLiteOpenHelper{
      * @return boolean
      **/
     protected boolean deleteRecord(String tableName, Map<String, String> where) {
-        if (where.isEmpty()){
+        if (where.isEmpty()) {
             return false;
         }
         String whereClause = "";
@@ -128,10 +128,9 @@ public class BaseModel extends SQLiteOpenHelper{
             whereClause += entry.getKey() + "=? AND ";
             whereArg[i++] = entry.getValue();
         }
-        if (whereClause.endsWith("AND ")){
+        if (whereClause.endsWith("AND ")) {
             whereClause = whereClause.substring(0, whereClause.length() - 4);
         }
-
         try {
             return db.delete(tableName, whereClause, whereArg) == 1;
         }catch (SQLException e){

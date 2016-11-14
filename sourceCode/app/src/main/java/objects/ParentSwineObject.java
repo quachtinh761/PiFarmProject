@@ -11,50 +11,37 @@ import function.DateHanding;
 
 public class ParentSwineObject {
 
-    private String ID;
+    private String ID;  // earnumber + "-" + DateImport
     private Date dateImport;
     private String earNumber;
-    private Date matingDate;
+    private Date dateCoordination;
     private String coordinatorID;
     private Date expectedDateOfBirth;
-    private Date realDateOfBirth;
-    private int timesOfBirth;
-    private int totalChilds;
-    private String processID;
-    private Date firstVaccineDate;
-    private String lsGOAT;
-    private int numberChildsDie;
+    private String IDprocess;
+    private String process; //chua du lieu process da tinh toan dang $$
+    private String lsChildID; //chua list id theo dang $#$
+    private String  note; //chua note nguoi dung
 
-    public ParentSwineObject(String ID, Date dateImport, String earNumber, Date matingDate, String coordinatorID, Date realDateOfBirth, int timesOfBirth, int totalChilds, String processID, Date firstVaccineDate, String lsGOAT, int numberChildsDie, Date expectedDateOfBirth) {
+
+    public String getNote() {
+        return note;
+    }
+
+    public ParentSwineObject(String ID, Date dateImport, String earNumber, Date dateCoordination, String coordinatorID, Date expectedDateOfBirth, String IDprocess, String process, String lsChildID, String note) {
         this.ID = ID;
         this.dateImport = dateImport;
         this.earNumber = earNumber;
-        this.matingDate = matingDate;
+        this.dateCoordination = dateCoordination;
         this.coordinatorID = coordinatorID;
-        this.realDateOfBirth = realDateOfBirth;
-        this.timesOfBirth = timesOfBirth;
-        this.totalChilds = totalChilds;
-        this.processID = processID;
-        this.firstVaccineDate = firstVaccineDate;
-        this.lsGOAT = lsGOAT;
-        this.numberChildsDie = numberChildsDie;
         this.expectedDateOfBirth = expectedDateOfBirth;
+        this.IDprocess = IDprocess;
+        this.process = process;
+        this.lsChildID = lsChildID;
+        this.note = note;
     }
 
-    public ParentSwineObject(String ID, String processID, String earNumber, Date dateImport) {
-        this.dateImport = dateImport;
-        this.earNumber = earNumber;
-        this.ID = ID;
-        this.processID = processID;
-    }
-
-    public ParentSwineObject(String ID, String processID,String earNumber,Date dateImport,Date matingDate)  {
-        this.matingDate = matingDate;
-        this.expectedDateOfBirth = DateHanding.getDateAfter(dateImport,115);
-        this.dateImport = dateImport;
-        this.earNumber = earNumber;
-        this.ID = ID;
-        this.processID = processID;
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public String getID() {
@@ -81,12 +68,12 @@ public class ParentSwineObject {
         this.earNumber = earNumber;
     }
 
-    public Date getMatingDate() {
-        return matingDate;
+    public Date getDateCoordination() {
+        return dateCoordination;
     }
 
-    public void setMatingDate(Date matingDate) {
-        this.matingDate = matingDate;
+    public void setDateCoordination(Date dateCoordination) {
+        this.dateCoordination = dateCoordination;
     }
 
     public String getCoordinatorID() {
@@ -105,59 +92,27 @@ public class ParentSwineObject {
         this.expectedDateOfBirth = expectedDateOfBirth;
     }
 
-    public Date getRealDateOfBirth() {
-        return realDateOfBirth;
+    public String getIDprocess() {
+        return IDprocess;
     }
 
-    public void setRealDateOfBirth(Date realDateOfBirth) {
-        this.realDateOfBirth = realDateOfBirth;
+    public void setIDprocess(String IDprocess) {
+        this.IDprocess = IDprocess;
     }
 
-    public int getTimesOfBirth() {
-        return timesOfBirth;
+    public String getProcess() {
+        return process;
     }
 
-    public void setTimesOfBirth(int timesOfBirth) {
-        this.timesOfBirth = timesOfBirth;
+    public void setProcess(String process) {
+        this.process = process;
     }
 
-    public int getTotalChilds() {
-        return totalChilds;
+    public String getLsChildID() {
+        return lsChildID;
     }
 
-    public void setTotalChilds(int totalChilds) {
-        this.totalChilds = totalChilds;
-    }
-
-    public String getProcessID() {
-        return processID;
-    }
-
-    public void setProcessID(String processID) {
-        this.processID = processID;
-    }
-
-    public Date getFirstVaccineDate() {
-        return firstVaccineDate;
-    }
-
-    public void setFirstVaccineDate(Date firstVaccineDate) {
-        this.firstVaccineDate = firstVaccineDate;
-    }
-
-    public String getLsGOAT() {
-        return lsGOAT;
-    }
-
-    public void setLsGOAT(String lsGOAT) {
-        this.lsGOAT = lsGOAT;
-    }
-
-    public int getNumberChildsDie() {
-        return numberChildsDie;
-    }
-
-    public void setNumberChildsDie(int numberChildsDie) {
-        this.numberChildsDie = numberChildsDie;
+    public void setLsChildID(String lsChildID) {
+        this.lsChildID = lsChildID;
     }
 }

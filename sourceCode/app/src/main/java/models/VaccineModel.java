@@ -1,5 +1,8 @@
 package models;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,105 +25,97 @@ import objects.VaccineObject;
 
  */
 
-public class VaccineModel {
+public class VaccineModel extends BaseModel{
     private String tableName = "VACCINE";
-    private BaseModel bsmod = new BaseModel();
     private List<String []> params;
-    private static String[] listFieldArr = {"id","name","indication","dose",
-            "inserted_date","updated_date","inserted_by","updated_by"};
-    private static List<String> listFieldLs;
+    private static String[] listField = {"ID","name","indication","dose", "insertedBy","updatedBy","insertedDate","updatedDate"};
+    //                                      0   1       2           3           4           5           6               7
 
     private void makeparams(){
         String[] p = new String[2];
-        p[0] = "id";
+        p[0] = listField[0];
         p[1] = "TEXT(50) NOT NULL";
         params.add(p);
-        p[0] = "name";
+        p[0] = listField[1];
         p[1] = "TEXT(10)";
         params.add(p);
-        p[0] = "indication";
+        p[0] = listField[2];
         p[1] = "TEXT(50) NOT NULL";
         params.add(p);
-        p[0] = "dose";
+        p[0] = listField[3];
         p[1] = "TEXT(50)";
         params.add(p);
-        p[0] = "inserted_date";
-        p[1] = "TEXT(10)";
-        params.add(p);
-        p[0] = "updated_date";
-        p[1] = "TEXT(10)";
-        params.add(p);
-        p[0] = "inserted_by";
+        p[0] = listField[4];
         p[1] = "TEXT(10) NOT NULL";
         params.add(p);
-        p[0] = "updated_by";
+        p[0] = listField[5];
+        p[1] = "TEXT(10)";
+        params.add(p);
+        p[0] = listField[6];
         p[1] = "TEXT(10) NOT NULL";
+        params.add(p);
+        p[0] = listField[7];
+        p[1] = "TEXT(10)";
         params.add(p);
     }
-    /*
-    * @param params
-     * List < String[] > params = ArrayList();
-     * params.put("fieldName1","filedType1(primary key if needed)");
-     * params.put("fieldName2","filedType2 (not null)");
-     */
-    public VaccineModel() {
-        for (String var: listFieldArr) listFieldLs.add(var);
-        if (!bsmod.isTableExist(tableName)){
+    public VaccineModel(Context context) {
+        super(context);
+        if (!this.isTableExist(tableName)){
             makeparams();
-            bsmod.createTable(tableName,params);
+            this.createTable(tableName,params);
         }
     }
 
-    private Map<String, String> makeMapToAdd(VaccineObject vaccineObject){
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("id",vaccineObject.getID());
-        map.put("name",vaccineObject.getName());
-        map.put("indication",vaccineObject.getIndication());
-        map.put("dose",vaccineObject.getDose());
-        map.put("inserted_date",DateHanding.getDateString(vaccineObject.getInsertedDate()));
-        map.put("updated_date",DateHanding.getDateString(vaccineObject.getUpdatedDate()));
-        map.put("inserted_by",vaccineObject.getInsertedBy());
-        map.put("updated_by",vaccineObject.getUpdatedBy());
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+    }
 
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    }
+
+    private Map<String, String> makeMap(VaccineObject vaccineObject){
+        Map<String, String> map = new HashMap<String, String>();
+        map.put(listField[0],vaccineObject.getID());
+        map.put(listField[1],vaccineObject.getName());
+        map.put(listField[2],vaccineObject.getIndication());
+        map.put(listField[3],vaccineObject.getDose());
+        map.put(listField[4],vaccineObject.getInsertedBy());
+        map.put(listField[5],vaccineObject.getUpdatedBy());
+        map.put(listField[6],DateHanding.getDateString(vaccineObject.getInsertedDate()));
+        map.put(listField[7],DateHanding.getDateString(vaccineObject.getUpdatedDate()));
         return map;
     }
-    public void add(VaccineObject vaccineObject){
-        bsmod.insertTable(tableName,makeMapToAdd(vaccineObject));
+    public void add(List<VaccineObject> vaccineObject){
+        for (VaccineObject var : vaccineObject) {
+            this.insert(tableName, makeMap(var));
+        }
     }
 
-    public void remove(VaccineObject vaccineObject){
+    public void remove(List<VaccineObject> vaccineObject){
         Map<String, String> map = new HashMap<String,String>();
-        map.put("id",vaccineObject.getID());
-        bsmod.deleteRecord(tableName,map);
-    }
-    public void remove(String id){
-        Map<String, String> map = new HashMap<String,String>();
-        map.put("id",id);
-        bsmod.deleteRecord(tableName,map);
-    }
-    /*
-    * listDataUpdate include Interger is order of listField and String is Value
-    * exam you want update coordination_date
-    * int list have <3, 11-11-1111>
-    *     3 is 3th in listField that is coordination_date
-     */
-    public void update(String id, Map<Integer, String> listDataUpdate){
-        Map<String,String> map = new HashMap<String,String>();
-        for (Map.Entry<Integer, String> var : listDataUpdate.entrySet()){
-            map.put(listFieldArr[var.getKey()],var.getValue());
+        for (VaccineObject var : vaccineObject){
+            map.put(listField[0],var.getID());
+            this.deleteRecord(tableName,map);
+            map.clear();
         }
-        String[] lsID = {id};
-        bsmod.updateRecord(tableName,map,lsID);
-    }
 
-    /*
-    *You can update more Swine by list ID if it same value to update
-     */
-    public void update(String[] lsID, Map<Integer, String> listDataUpdate){
-        Map<String,String> map = new HashMap<String,String>();
-        for (Map.Entry<Integer, String> var : listDataUpdate.entrySet()){
-            map.put(listFieldArr[var.getKey()],var.getValue());
+    }
+    public void remove(String[] id){
+        Map<String, String> map = new HashMap<String,String>();
+        for (String var : id){
+            map.put(listField[0],var);
+            this.deleteRecord(tableName,map);
+            map.clear();
         }
-        bsmod.updateRecord(tableName,map,lsID);
+
+    }
+    public void update(List<VaccineObject> vaccineObject){
+        Map<String,String> where = new HashMap<String, String>();
+        for (VaccineObject var : vaccineObject){
+            where.put(listField[0],var.getID());
+            this.updateRecord(tableName,makeMap(var),where);
+            where.clear();
+        }
     }
 }

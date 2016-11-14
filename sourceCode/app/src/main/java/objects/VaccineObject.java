@@ -7,8 +7,8 @@ import java.util.Date;
  */
 
 public class VaccineObject {
-    String ID,name,indication,dose,insertedBy,updatedBy;
-    Date insertedDate,updatedDate;
+    private String ID,name,indication,dose,insertedBy,updatedBy;
+    private Date insertedDate,updatedDate;
 
     public VaccineObject(String ID, String name, String indication, String dose, String insertedBy, String updatedBy, Date insertedDate, Date updatedDate) {
         this.ID = ID;

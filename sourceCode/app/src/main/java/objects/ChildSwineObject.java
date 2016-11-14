@@ -7,34 +7,24 @@ import java.util.Date;
  */
 
 public class ChildSwineObject {
-    private String id;
-
-    /**
-     *
-     */
+    private String id;  // = IDParent + BirthDay
     private String parentID;
-
-    /**
-     *
-     */
     private String processID;
-
-    /**
-     *
-     */
+    private String process;
     private Date dateOfBirth;
+    private int total;
+    private String childDie; //include number#nguyen nhan
+    private int numberChildDie;
 
-    /**
-     *
-     */
-    private int quantity;
-
-    public ChildSwineObject(String id, String parentID, String processID, Date dateOfBirth, int quantity) {
+    public ChildSwineObject(String id, String parentID, String processID, String process, Date dateOfBirth, int total, String childDie, int numberChildDie) {
         this.id = id;
         this.parentID = parentID;
         this.processID = processID;
+        this.process = process;
         this.dateOfBirth = dateOfBirth;
-        this.quantity = quantity;
+        this.total = total;
+        this.childDie = childDie;
+        this.numberChildDie = numberChildDie;
     }
 
     public String getId() {
@@ -61,6 +51,14 @@ public class ChildSwineObject {
         this.processID = processID;
     }
 
+    public String getProcess() {
+        return process;
+    }
+
+    public void setProcess(String process) {
+        this.process = process;
+    }
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -69,11 +67,27 @@ public class ChildSwineObject {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getTotal() {
+        return total;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public String getChildDie() {
+        return childDie;
+    }
+
+    public void setChildDie(String childDie) {
+        this.childDie = childDie;
+    }
+
+    public int getNumberChildDie() {
+        return numberChildDie;
+    }
+
+    public void setNumberChildDie(int numberChildDie) {
+        this.numberChildDie = numberChildDie;
     }
 }

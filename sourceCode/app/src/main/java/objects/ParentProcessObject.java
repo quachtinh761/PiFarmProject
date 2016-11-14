@@ -1,85 +1,66 @@
 package objects;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by vanthi on 11/3/2016.
  */
 
-public class ParentProcessObject extends ProcessObject {
-    int numberVaccineImport,numberVaccineWhenHaveChild;
-    Date dateBeginVaccinImport,dateBeginVaccineWhenHaveChild;
+public class ParentProcessObject{
+    private String ID;
+    private int nDayAfterImport;
+    private Map<String, Integer> listVaccineImport = new HashMap<String, Integer>(); //include IDVaccine and spacedate
+    private int nDayAfterCoordination;
+    private Map<String, Integer> listVaccineCoordination = new HashMap<String, Integer>(); //include IDVaccine and spacedate
 
-    //list vaccine is Vaccine Import first and then is vaccine when have child
-    public ParentProcessObject(int numberVaccineImport, int numberVaccineWhenHaveChild, Date dateBeginVaccinImport, Date dateBeginVaccineWhenHaveChild,
-                               List<String> vaccineAll) {
-        this.numberVaccineImport = numberVaccineImport;
-        this.numberVaccineWhenHaveChild = numberVaccineWhenHaveChild;
-        this.dateBeginVaccinImport = dateBeginVaccinImport;
-        this.dateBeginVaccineWhenHaveChild = dateBeginVaccineWhenHaveChild;
-        setVaccine(vaccineAll);
-    }
-    public ParentProcessObject(int numberVaccineImport, int numberVaccineWhenHaveChild, Date dateBeginVaccinImport, Date dateBeginVaccineWhenHaveChild,
-                               String[] vaccineAll) {
-        this.numberVaccineImport = numberVaccineImport;
-        this.numberVaccineWhenHaveChild = numberVaccineWhenHaveChild;
-        this.dateBeginVaccinImport = dateBeginVaccinImport;
-        this.dateBeginVaccineWhenHaveChild = dateBeginVaccineWhenHaveChild;
-        for (int i=0;i<vaccineAll.length;i++){
-            addVaccine(vaccineAll[i]);
-        }
-    }
-    public ParentProcessObject(List<String> vaccineImport, List<String> VaccineWhenHaveChild,Date dateBeginVaccinImport,Date dateBeginVaccineWhenHaveChild) {
-        this.numberVaccineImport = vaccineImport.size();
-        this.numberVaccineWhenHaveChild = VaccineWhenHaveChild.size();
-        this.dateBeginVaccinImport = dateBeginVaccinImport;
-        this.dateBeginVaccineWhenHaveChild = dateBeginVaccineWhenHaveChild;
-        setVaccine(vaccineImport);
-        for (String p: VaccineWhenHaveChild) {
-            addVaccine(p);
-        }
+    public ParentProcessObject(String ID, int nDayAfterImport, Map<String, Integer> listVaccineImport, int nDayAfterCoordination, Map<String, Integer> listVaccineCoordination) {
+        this.ID = ID;
+        this.nDayAfterImport = nDayAfterImport;
+        this.listVaccineImport = listVaccineImport;
+        this.nDayAfterCoordination = nDayAfterCoordination;
+        this.listVaccineCoordination = listVaccineCoordination;
     }
 
-    public void addVaccineImport(String Vaccine){
-        addVaccine(numberVaccineImport-1,Vaccine);
-        numberVaccineImport++;
-    }
-    public void addVaccineWhenHaveChild(String Vaccine){
-        addVaccine(Vaccine);
-        numberVaccineWhenHaveChild++;
+    public String getID() {
+        return ID;
     }
 
-
-    public int getNumberVaccineImport() {
-        return numberVaccineImport;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
-    /*public void setNumberVaccineImport(int numberVaccineImport) {
-        this.numberVaccineImport = numberVaccineImport;
-    }*/
-
-    public int getNumberVaccineWhenHaveChild() {
-        return numberVaccineWhenHaveChild;
+    public int getnDayAfterImport() {
+        return nDayAfterImport;
     }
 
-    /*public void setNumberVaccineWhenHaveChild(int numberVaccineWhenHaveChild) {
-        this.numberVaccineWhenHaveChild = numberVaccineWhenHaveChild;
-    }*/
-
-    public Date getDateBeginVaccinImport() {
-        return dateBeginVaccinImport;
+    public void setnDayAfterImport(int nDayAfterImport) {
+        this.nDayAfterImport = nDayAfterImport;
     }
 
-    public void setDateBeginVaccinImport(Date dateBeginVaccinImport) {
-        this.dateBeginVaccinImport = dateBeginVaccinImport;
+    public Map<String, Integer> getListVaccineImport() {
+        return listVaccineImport;
     }
 
-    public Date getDateBeginVaccineWhenHaveChild() {
-        return dateBeginVaccineWhenHaveChild;
+    public void setListVaccineImport(Map<String, Integer> listVaccineImport) {
+        this.listVaccineImport = listVaccineImport;
     }
 
-    public void setDateBeginVaccineWhenHaveChild(Date dateBeginVaccineWhenHaveChild) {
-        this.dateBeginVaccineWhenHaveChild = dateBeginVaccineWhenHaveChild;
+    public int getnDayAfterCoordination() {
+        return nDayAfterCoordination;
+    }
+
+    public void setnDayAfterCoordination(int nDayAfterCoordination) {
+        this.nDayAfterCoordination = nDayAfterCoordination;
+    }
+
+    public Map<String, Integer> getListVaccineCoordination() {
+        return listVaccineCoordination;
+    }
+
+    public void setListVaccineCoordination(Map<String, Integer> listVaccineCoordination) {
+        this.listVaccineCoordination = listVaccineCoordination;
     }
 }
