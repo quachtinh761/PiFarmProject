@@ -7,6 +7,6 @@
     <string name="password">Mật khẩu</string>
     <string name="exampleEmail">Example@gmail.com</string>
     <string name="forgotPassword">Quên mật khẩu?</string>
-    <string name="textDerector"> Hoặc đăng nhập với</string>
+    <string name="textDerector"> Hoặc tạo tài khoảng với</string>
     <string name="introTitle">Giới thiệu</string>
 </resources>

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -85,14 +84,14 @@ public class Login extends AppCompatActivity {
                     SaveSharedPreference.setUserName(Login.this, userName);
                     Intent loginIntent = new Intent(Login.this, Features.class);
                     Login.this.startActivity(loginIntent);
-                    String text = SaveSharedPreference.getUserName(Login.this).toString();
-                    Log.i(TAG, text);
-                    Log.i(TAG, "login is true");
+//                    String text = SaveSharedPreference.getUserName(Login.this).toString();
+//                    Log.i(TAG, text);
+//                    Log.i(TAG, "login is true");
                     finish();
                 } else {
                     etxtEmail.setText("");
                     etxtPass.setText("");
-                    Log.i(TAG, "login is false");
+//                    Log.i(TAG, "login is false");
                 }
             }
         });

@@ -38,7 +38,7 @@
 
     <TextView
         android:text="@string/textDerector"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,31 +90,49 @@
         android:layout_above="@+id/Line"
         android:layout_centerHorizontal="true" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/user_icon"
+        android:layout_alignTop="@+id/edtMail"
+        android:layout_alignStart="@+id/edtMail"
+        android:id="@+id/imageView3" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pass_icon"
+        android:layout_below="@+id/edtMail"
+        android:layout_alignStart="@+id/edtPassword"
+        android:id="@+id/imageView4" />
+
     <EditText
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:inputType="text|textPassword"
+        android:paddingLeft="50dp"
         android:ems="10"
         android:focusableInTouchMode="true"
         android:textColor="@color/black"
         android:id="@+id/edtPassword"
         android:hint="@string/password"
+        android:layout_marginBottom="53dp"
         android:layout_above="@+id/btnLogin"
-        android:layout_alignStart="@+id/btnLogin"
-        android:layout_marginBottom="61dp" />
+        android:layout_alignStart="@+id/btnLogin" />
 
     <EditText
         android:layout_width="400dp"
         android:textSize="30sp"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
+        android:paddingLeft="50dp"
         android:ems="10"
         android:textColor="@color/black"
         android:id="@+id/edtMail"
         android:focusableInTouchMode="true"
         android:hint="@string/exampleEmail"
+        android:layout_marginBottom="45dp"
         android:layout_above="@+id/edtPassword"
-        android:layout_alignStart="@+id/edtPassword"
-        android:layout_marginBottom="36dp" />
+        android:layout_alignStart="@+id/imageView4" />
 </RelativeLayout>
