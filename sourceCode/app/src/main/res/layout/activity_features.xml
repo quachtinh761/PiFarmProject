@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_features"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="vn.com.gant.pifarm.Features">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/toolbarBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="vn.com.gant.pifarm.ActionBarFragment"
+            android:id="@+id/actionBarFragment"
+            tools:layout="@layout/fragment_action_bar" />
 
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
 
-</RelativeLayout>
+        </GridLayout>
+    </LinearLayout>
+</ScrollView>
