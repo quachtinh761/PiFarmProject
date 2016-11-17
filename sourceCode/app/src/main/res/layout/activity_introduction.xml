@@ -9,7 +9,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:background="@color/introBackground"
-    tools:context="vn.com.gant.pifarm.Introduction">
+    tools:context="vn.com.gant.pifarm.activities.Introduction">
 
     <LinearLayout
         android:orientation="vertical"

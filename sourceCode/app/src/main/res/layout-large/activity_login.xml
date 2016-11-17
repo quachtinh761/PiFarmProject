@@ -12,7 +12,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/loginBackground"
-    tools:context="vn.com.gant.pifarm.Login">
+    tools:context="vn.com.gant.pifarm.activities.Login">
 
     <View
         android:layout_height="1dp"

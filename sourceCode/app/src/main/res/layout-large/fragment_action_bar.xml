@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="vn.com.gant.pifarm.ActionBarFragment">
+    tools:context="vn.com.gant.pifarm.fragments.ActionBarFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

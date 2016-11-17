@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Pifarm</string>
     <string name="login_title">Đăng nhập</string>
-    <string name="features_title">Tính năng</string>
+    <string name="features_title">Home</string>
     <string name="name_label">Tên</string>
     <string name="email_label">Địa Chỉ Email hoặc Username</string>
     <string name="password">Mật khẩu</string>
@@ -10,6 +10,17 @@
     <string name="textDerector"> Hoặc tạo tài khoảng với</string>
     <string name="introTitle">Giới thiệu</string>
     <string name="locationTitle">Location Title</string>
+    <string name="featuresLocationTitle">Home</string>
+    <string name="readCardTitle">Đọc thẻ</string>
+    <string name="writeCardTitle">Ghi thẻ</string>
+    <string name="addSwineTitle">Thêm heo</string>
+    <string name="manageSwineTitle">Quản lý heo</string>
+    <string name="vaccineTitle">Thuốc và vaccine</string>
+    <string name="statisticTitle">Thống kê</string>
+    <string name="forumTitle">Hỏi đáp</string>
+    <string name="manageStaffTitle">Quản lý nhân viên</string>
+    <string name="syncTitle">Đồng bộ dữ liệu</string>
+    <string name="logoutTitle">Đăng xuất</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
