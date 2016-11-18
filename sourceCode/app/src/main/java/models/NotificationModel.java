@@ -1,6 +1,7 @@
 package models;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -31,10 +32,15 @@ public class NotificationModel extends BaseModel {
 
     public NotificationModel(Context context) {
         super(context);
-        if (!this.isTableExist(tableName)){
+    }
+
+    public void onCreate(SQLiteDatabase db) {
             makeparams();
             this.createTable(tableName,params);
-        }
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
     /*
     * @param params

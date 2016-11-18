@@ -75,7 +75,8 @@ public class Login extends AppCompatActivity {
                 pass = etxtPass.getText().toString();
                 if (checkLogin(userName, pass)){
                     SaveSharedPreference.setUserName(Login.this, userName);
-                    Intent loginIntent = new Intent(Login.this, Features.class);
+                   // Intent loginIntent = new Intent(Login.this, Features.class);
+                    Intent loginIntent = new Intent(Login.this, TestAddUser.class);
                     Login.this.startActivity(loginIntent);
                     String text = SaveSharedPreference.getUserName(Login.this).toString();
                     Log.i(TAG, text);
