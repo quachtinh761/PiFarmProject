@@ -14,10 +14,8 @@ public class Features extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_features);
 
-        setTitle(getString(R.string.features_title));
-    }
+        String title = getString(R.string.features_title);
 
-    public void setTitle(String title){
         ActionBarFragment frmActionBar = (ActionBarFragment) this.getSupportFragmentManager().findFragmentById(R.id.actionBarFragment);
         frmActionBar.setTitleBar(title);
     }

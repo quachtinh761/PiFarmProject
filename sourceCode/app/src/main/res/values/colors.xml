@@ -26,4 +26,5 @@
     <color name="syncBackground">#8C6450</color>
     <color name="forumBackground">#B36943</color>
     <color name="textLoginButton">#443E3E</color>
+    <color name="popupMenu">#9be9dde5</color>
 </resources>
