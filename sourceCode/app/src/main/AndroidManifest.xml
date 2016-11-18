@@ -18,6 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="controllers.LoginController" />
         <activity android:name=".Login" />
         <activity android:name=".Features" />
         <activity android:name=".FacebookConnector" />

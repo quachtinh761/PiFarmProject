@@ -83,7 +83,7 @@ public class BaseModel extends SQLiteOpenHelper{
             }else{
                 return false;
             }
-            db.compileStatement(CREATE_TABLE);
+            db.execSQL(CREATE_TABLE);
             return true;
         }catch (Exception ex){
             return false;
@@ -97,7 +97,7 @@ public class BaseModel extends SQLiteOpenHelper{
     protected boolean isTableExist(String tableName) {
         try {
             rs = db.query(tableName, new String[]{"*"}, "1=?", new String[]{"1"}, null, null, null);
-            return rs.getCount() > 0;
+            return true;
         }catch (SQLException e){
             return false;
         }
@@ -220,7 +220,9 @@ public class BaseModel extends SQLiteOpenHelper{
             rs.close();
             return data;
         } catch (SQLException e) {
-            return null;
+            List<String[]> data = new ArrayList<>();
+            data.add(new String[]{e.getMessage()});
+            return data;
         }
     }
 

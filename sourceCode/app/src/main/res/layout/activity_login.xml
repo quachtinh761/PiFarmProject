@@ -12,7 +12,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/loginBackground"
-    tools:context="vn.com.gant.pifarm.Login">
+    tools:context="controllers.LoginController">
 
     <View
         android:layout_height="1dp"
@@ -73,7 +73,8 @@
         android:textColor="@color/black"
         android:layout_marginBottom="16dp"
         android:layout_above="@+id/Line"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="btnLoginClick"/>
 
     <EditText
         android:layout_width="300dp"
