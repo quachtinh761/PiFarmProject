@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
 //        Log.i(TAG,"user name:");
 
 //        SaveSharedPreference.clearUserName(MainActivity.this);
-        Intent directIntent = new Intent(this, LoginController.class);
-
+       // Intent directIntent = new Intent(this, LoginController.class);
+        Intent directIntent = new Intent(this, Login.class);
         startActivity(directIntent);
         ///end functions
         /*

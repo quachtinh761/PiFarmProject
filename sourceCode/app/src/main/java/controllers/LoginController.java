@@ -51,7 +51,7 @@ public class LoginController extends Activity{
             txtEmail.setText("User is not exist");
         }else{
             if (mail.equals(data.get(0)[0]) && psw.equals(data.get(0)[1])){
-                txtEmail.setText("Login Success");
+                txtEmail.setText("Login Failure");
             }else{
                 txtEmail.setText("Login Failure");
             }

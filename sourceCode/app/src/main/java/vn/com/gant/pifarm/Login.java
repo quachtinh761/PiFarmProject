@@ -14,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.List;
+
+import models.UserModel;
+
 public class Login extends AppCompatActivity {
 
     public static final String TAG = "LoginMessages";
@@ -49,9 +53,7 @@ public class Login extends AppCompatActivity {
         etxtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
-                    showKeyBoard();
-                } else {
+                if (!hasFocus) {
                     hideKeyBoard();
                 }
             }
@@ -60,9 +62,7 @@ public class Login extends AppCompatActivity {
         etxtPass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
-                    showKeyBoard();
-                } else {
+                if (!hasFocus) {
                     hideKeyBoard();
                 }
             }
@@ -133,11 +133,6 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    public void showKeyBoard(){
-        InputMethodManager imng = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-        imng.showSoftInput(etxtEmail, InputMethodManager.SHOW_IMPLICIT);
-    }
-
     public void hideKeyBoard(){
         InputMethodManager imng = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imng.hideSoftInputFromWindow(background.getWindowToken(), 0);
@@ -145,12 +140,21 @@ public class Login extends AppCompatActivity {
 
     public void onDestroy(){
         super.onDestroy();
-//        Log.i(TAG,"destroy");
     }
 
     public boolean checkLogin(String userName, String pass){
-        if ((userName.equals("admin"))&&(pass.equals("123"))) return true;
-        else return false;
+        UserModel user =new UserModel(this);
+        List<String[]> data = user.getUserByUserName(userName);
+        if (data.isEmpty()){
+            return false;
+
+        }else{
+            if (userName.equals(data.get(0)[0]) && pass.equals(data.get(0)[1])){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 
     public void saveUserInfoToReference(String userName, String pass){
