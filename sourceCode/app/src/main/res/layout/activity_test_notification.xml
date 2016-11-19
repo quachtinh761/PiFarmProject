@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_test_add_user"
+    android:id="@+id/activity_test_notification"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="vn.com.gant.pifarm.TestAddUser">
+    tools:context="vn.com.gant.pifarm.activities.TestNotification">
 
     <Button
         android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
-        android:id="@+id/edtPassTest"
+        android:id="@+id/edtNotificationTest"
         android:hint="Notification"
         android:layout_above="@+id/btAddTest"
         android:layout_centerHorizontal="true"
@@ -36,12 +36,13 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
+        android:inputType="text"
         android:ems="10"
-        android:id="@+id/edtUserTest"
+        android:id="@+id/edtDateTest"
         android:hint="Date"
-        android:layout_alignBottom="@+id/edtPassTest"
-        android:layout_alignStart="@+id/edtPassTest"
+        android:layout_alignBottom="@+id/edtNotificationTest"
+        android:layout_alignStart="@+id/edtNotificationTest"
         android:layout_marginBottom="77dp"
         android:selectAllOnFocus="false" />
+
 </RelativeLayout>

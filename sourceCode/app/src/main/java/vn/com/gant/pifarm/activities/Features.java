@@ -41,7 +41,7 @@ public class Features extends AppCompatActivity {
                 String title = (String) ((TextView) view.findViewById(R.id.grid_item_label)).getText();
                 switch (title){
                     case "Đọc thẻ":
-                        derectTo(ReadCard.class);
+                        derectTo(TestNotification.class);
                         break;
                     case "Ghi thẻ":
                         derectTo(WriteCard.class);
