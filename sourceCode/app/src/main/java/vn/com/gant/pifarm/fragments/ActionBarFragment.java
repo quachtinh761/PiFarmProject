@@ -1,6 +1,7 @@
 package vn.com.gant.pifarm.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,12 +13,22 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.lang.reflect.Method;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import vn.com.gant.pifarm.R;
+import vn.com.gant.pifarm.SaveSharedPreference;
+import vn.com.gant.pifarm.activities.Features;
+import vn.com.gant.pifarm.activities.Forum;
+import vn.com.gant.pifarm.activities.Login;
+import vn.com.gant.pifarm.activities.ManageStaffs;
+import vn.com.gant.pifarm.activities.ManageSwine;
+import vn.com.gant.pifarm.activities.ReadCard;
+import vn.com.gant.pifarm.activities.Statictis;
+import vn.com.gant.pifarm.activities.SyncData;
+import vn.com.gant.pifarm.activities.Vaccines;
+import vn.com.gant.pifarm.activities.WriteCard;
 
 
 /**
@@ -45,7 +56,6 @@ public class ActionBarFragment extends Fragment {
         ibtnMenuBar = (ImageButton) frmActionBar.findViewById(R.id.ibtnMenuBar);
         txvLocationBar = (TextView) frmActionBar.findViewById(R.id.txvLocationBar);
         imageLogoBarIcon = (ImageView) frmActionBar.findViewById(R.id.imageLogoBarIcon);
-        searchBar = (SearchView) frmActionBar.findViewById(R.id.searchBar);
 
         ibtnMenuBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +85,42 @@ public class ActionBarFragment extends Fragment {
                 optionMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        Toast.makeText(getActivity(), item.getTitle(), Toast.LENGTH_LONG).show();
+                        String presentTitle = (String) item.getTitle();
+                        switch (presentTitle){
+                            case "Home":
+                                derectTo(Features.class);
+                                break;
+                            case "Đọc thẻ":
+                                derectTo(ReadCard.class);
+                                break;
+                            case "Ghi thẻ":
+                                derectTo(WriteCard.class);
+                                break;
+                            case "Quản lý heo":
+                                derectTo(ManageSwine.class);
+                                break;
+                            case "Thuốc và vaccine":
+                                derectTo(Vaccines.class);
+                                break;
+                            case "Thống kê":
+                                derectTo(Statictis.class);
+                                break;
+                            case "Hỏi đáp":
+                                derectTo(Forum.class);
+                                break;
+                            case "Quản lý nhân viên":
+                                derectTo(ManageStaffs.class);
+                                break;
+                            case "Đồng bộ dữ liệu":
+                                derectTo(SyncData.class);
+                                break;
+                            case "Đăng xuất":
+                                SaveSharedPreference.setUserName(getActivity(), "");
+                                derectTo(Login.class);
+                                break;
+                            default:
+                                break;
+                        }
                         return true;
                     }
                 });
@@ -86,6 +131,12 @@ public class ActionBarFragment extends Fragment {
         txvLocationBar.setText("");
 
         return frmActionBar;
+    }
+
+    private void derectTo(Class derection){
+        Intent container = new Intent(getActivity(), derection);
+        getActivity().startActivity(container);
+        getActivity().finish();
     }
 
     public void setTitleBar(String titleBar){

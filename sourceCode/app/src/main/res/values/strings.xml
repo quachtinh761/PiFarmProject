@@ -21,6 +21,7 @@
     <string name="manageStaffTitle">Quản lý nhân viên</string>
     <string name="syncTitle">Đồng bộ dữ liệu</string>
     <string name="logoutTitle">Đăng xuất</string>
+    <string name="feature">Feature</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

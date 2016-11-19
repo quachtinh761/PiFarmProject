@@ -38,12 +38,6 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
 
-        <SearchView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/searchBar"
-            android:layout_alignTop="@+id/imageLogoBarIcon"
-            android:layout_toStartOf="@+id/ibtnMenuBar" />
     </RelativeLayout>
 
 </FrameLayout>

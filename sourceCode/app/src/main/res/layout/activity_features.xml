@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/toolbarBackground">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/popupMenu">
 
-    <LinearLayout
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:name="vn.com.gant.pifarm.fragments.ActionBarFragment"
+        android:id="@+id/actionBarFragment"
+        tools:layout="@layout/fragment_action_bar" />
 
-
-        <fragment
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:name="vn.com.gant.pifarm.fragments.ActionBarFragment"
-            android:id="@+id/actionBarFragment"
-            tools:layout="@layout/fragment_action_bar" />
-
-    </LinearLayout>
-</ScrollView>
+    <GridView
+        android:id="@+id/gridFeatures"
+        android:numColumns="3"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/homeBackground">
+    </GridView>
+</LinearLayout>
