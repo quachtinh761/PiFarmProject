@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import vn.com.gant.pifarm.R;
 import vn.com.gant.pifarm.SaveSharedPreference;
@@ -94,6 +95,9 @@ public class Login extends AppCompatActivity {
                 } else {
                     etxtEmail.setText("");
                     etxtPass.setText("");
+                    etxtEmail.setHint(R.string.exampleEmail);
+                    etxtPass.setHint(R.string.password);
+                    Toast.makeText(Login.this, getString(R.string.failLoginMessage), Toast.LENGTH_SHORT).show();
 //                    Log.i(TAG, "login is false");
                 }
             }
