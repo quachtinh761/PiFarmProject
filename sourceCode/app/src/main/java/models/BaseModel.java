@@ -54,7 +54,7 @@ public class BaseModel extends SQLiteOpenHelper{
         for (Map.Entry<String, String> entry : params.entrySet()) {
             values.put(entry.getKey(), entry.getValue());
         }
-        return db.insert("USER", null,
+        return db.insert(tableName, null,
                 values);
     }
 
@@ -79,7 +79,7 @@ public class BaseModel extends SQLiteOpenHelper{
             }
             if (CREATE_TABLE.endsWith(",")){
                 CREATE_TABLE = CREATE_TABLE.substring(0, CREATE_TABLE.length() - 1);
-                CREATE_TABLE += ") ";
+                CREATE_TABLE += ")";
             }else{
                 return false;
             }

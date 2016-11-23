@@ -36,8 +36,8 @@ public class TestNotification extends AppCompatActivity {
     }
 
     public void addOnClick(View view) {
-        String date = txtDate.getText().toString();
-        String notification = txtDate.getText().toString();
+        Date date = DateHanding.getDate(txtDate.getText().toString());
+        String notification = txtNotification.getText().toString();
         //txtNotification.setText(DateHanding.getDateString(date));
       // List<String[]> data = notificationModel.getNotificationByDate(date);
 //       if(data.isEmpty()){
@@ -45,8 +45,8 @@ public class TestNotification extends AppCompatActivity {
 //       }
 //        else
 //       txtNotification.setText(data.get(0)[1].toString());
-//        notificationModel.remove("13-13-1313");
-       notificationModel.add(date,notification);
+        //notificationModel.remove(date);
+        notificationModel.add(DateHanding.getDateString(date),notification);
 
 
     }

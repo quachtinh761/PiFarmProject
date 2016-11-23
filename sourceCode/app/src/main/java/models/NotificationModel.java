@@ -64,6 +64,7 @@ public class NotificationModel extends BaseModel {
         this.insert(tableName,map);
     }
 
+
     public void remove(NotificationObject notificationObjects){
         Map<String, String> map = new HashMap<String, String>();
         map.put(listField[0],DateHanding.getDateString( notificationObjects.getDate()));
