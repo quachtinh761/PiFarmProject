@@ -50,22 +50,32 @@ public class NotificationModel extends BaseModel {
      * params.put("fieldName2","filedType2 (not null)");
      */
 
-    public void add(){
+    public void add(NotificationObject notificationObject){
         Map<String, String> map = new HashMap<String, String>();
-        //map.put(listField[0],DateHanding.getDateString(notificationObject.getDate()));
-        //map.put(listField[1],notificationObject.getNotification());
-        map.put(listField[0],"12-13-1415");
-        map.put(listField[1],"okokok");
+        map.put(listField[0],DateHanding.getDateString(notificationObject.getDate()));
+        map.put(listField[1],notificationObject.getNotification());
         this.insert(tableName,map);
     }
 
-    public void remove(List<NotificationObject> notificationObjects){
+    public void add(String date,String notification){
         Map<String, String> map = new HashMap<String, String>();
-        for (NotificationObject var : notificationObjects) {
-            map.put(listField[0],DateHanding.getDateString( var.getDate()));
-            this.deleteRecord(tableName, map);
-            map.clear();
-        }
+        map.put(listField[0], date);
+        map.put(listField[1],notification);
+        this.insert(tableName,map);
+    }
+
+    public void remove(NotificationObject notificationObjects){
+        Map<String, String> map = new HashMap<String, String>();
+        map.put(listField[0],DateHanding.getDateString( notificationObjects.getDate()));
+        this.deleteRecord(tableName, map);
+        map.clear();
+    }
+
+    public void remove(String date){
+        Map<String, String> map = new HashMap<String, String>();
+        map.put(listField[0],date);
+        this.deleteRecord(tableName, map);
+        map.clear();
     }
     public List<String[]> getNotificationByDate(String date){
         String whereClause = listField[0]+" = ?";

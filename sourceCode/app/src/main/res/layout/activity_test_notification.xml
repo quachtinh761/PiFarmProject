@@ -10,17 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="vn.com.gant.pifarm.activities.TestNotification">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btAddTest"
-        android:text="Thêm"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="119dp"
-        android:onClick="addOnClick"
-        />
-
 
     <EditText
         android:layout_width="wrap_content"
@@ -44,5 +33,16 @@
         android:layout_alignStart="@+id/edtNotificationTest"
         android:layout_marginBottom="77dp"
         android:selectAllOnFocus="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btAddTest"
+        android:text="Thêm"
+        android:onClick="addOnClick"
+        android:layout_marginBottom="91dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/edtNotificationTest"
+        android:layout_alignEnd="@+id/edtNotificationTest" />
 
 </RelativeLayout>

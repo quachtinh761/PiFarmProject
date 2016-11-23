@@ -33,11 +33,13 @@ public class Login extends AppCompatActivity {
     private ImageView logo;
     private String userName = "";
     private String pass = "";
+    UserModel user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        user =new UserModel(this);
 
 //        Log.i(TAG, "onCreate: done");
 
@@ -165,7 +167,6 @@ public class Login extends AppCompatActivity {
     }
 
     public boolean checkLogin(String userName, String pass){
-        UserModel user =new UserModel(this);
         List<String[]> data = user.getUserByUserName(userName);
         if (data.isEmpty()){
             return false;
