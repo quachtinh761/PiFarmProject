@@ -41,7 +41,6 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         user =new UserModel(this);
 
-//        Log.i(TAG, "onCreate: done");
 
         // attach to layout element
         etxtEmail = (EditText)findViewById(R.id.edtMail);

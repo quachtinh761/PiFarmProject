@@ -47,8 +47,6 @@ public class TestNotification extends AppCompatActivity {
 //       txtNotification.setText(data.get(0)[1].toString());
         //notificationModel.remove(date);
         notificationModel.add(DateHanding.getDateString(date),notification);
-
-
     }
 }
 

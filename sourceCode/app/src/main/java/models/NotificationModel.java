@@ -33,11 +33,12 @@ public class NotificationModel extends BaseModel {
 
     public NotificationModel(Context context) {
         super(context);
+        this.createTableNotification();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        this.createTableNotification();
+
     }
 
     @Override
