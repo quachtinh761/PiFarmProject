@@ -54,8 +54,7 @@ public class BaseModel extends SQLiteOpenHelper{
         for (Map.Entry<String, String> entry : params.entrySet()) {
             values.put(entry.getKey(), entry.getValue());
         }
-        return db.insert("USER", null,
-                values);
+        return db.insert("USER", null, values);
     }
 
     /**
@@ -84,7 +83,7 @@ public class BaseModel extends SQLiteOpenHelper{
                 return false;
             }
             db.execSQL(CREATE_TABLE);
-            return true;
+            return this.isTableExist(tableName);
         }catch (Exception ex){
             return false;
         }
@@ -97,7 +96,7 @@ public class BaseModel extends SQLiteOpenHelper{
     protected boolean isTableExist(String tableName) {
         try {
             rs = db.query(tableName, new String[]{"*"}, "1=?", new String[]{"1"}, null, null, null);
-            return true;
+            return rs.getCount() == 0;
         }catch (SQLException e){
             return false;
         }
