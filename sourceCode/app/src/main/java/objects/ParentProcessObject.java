@@ -63,4 +63,7 @@ public class ParentProcessObject{
     public void setListVaccineCoordination(Map<String, Integer> listVaccineCoordination) {
         this.listVaccineCoordination = listVaccineCoordination;
     }
+    public boolean equal(ParentProcessObject a){
+        return a.getID() == ID;
+    }
 }

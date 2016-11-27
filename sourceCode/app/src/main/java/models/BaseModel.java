@@ -54,9 +54,9 @@ public class BaseModel extends SQLiteOpenHelper{
         for (Map.Entry<String, String> entry : params.entrySet()) {
             values.put(entry.getKey(), entry.getValue());
         }
-        return db.insert("USER", null,
-                values);
+        return db.insert(tableName, null, values);
     }
+
 
     /**
      * @param tableName : name of table

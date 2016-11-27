@@ -22,20 +22,22 @@ public class ChildProcessModel extends BaseModel{
     private String tableName = "CHILDPROCESS";
     private static String[] listField = {"ID","nDayAfterBorn","lsVaccine"};
     //                                     0 ,  1                   2
-    private List<String []> params;
+    private List<String []> params = new LinkedList<>();
     private void makeparams(){
         String[] p = new String[2];
         p[0] = listField[0];
-        p[1] = "TEXT(10) NOT NULL";
+        p[1] = "TEXT(10) NOT NULL PRIMARY KEY";
         params.add(p);
 
-        p[0] = listField[1];
-        p[1] = "INTEGER";
-        params.add(p);
+        String[] p1 = new String[2];
+        p1[0] = listField[1];
+        p1[1] = "INTEGER";
+        params.add(p1);
 
-        p[0] = listField[2];
-        p[1] = "TEXT(150)";
-        params.add(p);
+        String[] p2 = new String[2];
+        p2[0] = listField[2];
+        p2[1] = "TEXT(1500)";
+        params.add(p2);
     }
 
     public ChildProcessModel(Context context) {
@@ -45,6 +47,7 @@ public class ChildProcessModel extends BaseModel{
             this.createTable(tableName,params);
         }
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -76,38 +79,35 @@ public class ChildProcessModel extends BaseModel{
     }
 
     public void add(List<ChildProcessObject> childProcessObjects){
-        for (ChildProcessObject var : childProcessObjects){
-            this.insert(tableName,makeMap(var));
-        }
+        for (ChildProcessObject var : childProcessObjects) add(var);
+    }
+    public void add(ChildProcessObject childProcessObject){
+        insert(tableName, makeMap(childProcessObject));
     }
 
     public void remove(List<ChildProcessObject> childProcessObject){
-        Map<String, String> map = new HashMap<String,String>();
-        for (ChildProcessObject var : childProcessObject){
-            map.put(listField[0],var.getID());
-            this.deleteRecord(tableName,map);
-            map.clear();
-        }
-
+        for (ChildProcessObject var : childProcessObject)remove(var);
     }
     public void remove(String[] id){
+        for (String str : id) remove(str);
+    }
+    public void remove(String id){
         Map<String, String> map = new HashMap<String,String>();
-        for (String str : id){
-            map.put(listField[0],str);
-            this.deleteRecord(tableName,map);
-            map.clear();
-        }
-
+        map.put(listField[0],id);
+        this.deleteRecord(tableName,map);
+    }
+    public void remove(ChildProcessObject childProcessObject){
+        Map<String, String> map = new HashMap<String,String>();
+        map.put(listField[0], childProcessObject.getID());
+        this.deleteRecord(tableName,map);
     }
 
     public void update(List<ChildProcessObject> childProcessObject){
-        Map<String,String> where = new HashMap<String, String>();
-        for (ChildProcessObject var : childProcessObject){
-            where.put(listField[0],var.getID());
-            this.updateRecord(tableName,makeMap(var),where);
-            where.clear();
-        }
-
+        for (ChildProcessObject child: childProcessObject) update(child);
+    }
+    public void update(ChildProcessObject childProcessObject){
+        remove(childProcessObject.getID());
+        insert(tableName, makeMap(childProcessObject));
     }
 
     private Map<String,Integer> makeMap(String data){
@@ -121,7 +121,40 @@ public class ChildProcessModel extends BaseModel{
     }
     //num is index of listField
     public List<ChildProcessObject> search(String[] needSearch,int num){
-        List<String []> buff = searchDataByConditions(tableName,listField,listField[num],needSearch,"","","");
+        List<String []> buff = searchDataByConditions(tableName,listField,listField[num] + "= ?",needSearch,"","","");
+        List<ChildProcessObject> p = new LinkedList<ChildProcessObject>();
+        for (String[] var: buff) {
+            p.add(new ChildProcessObject(var[0], IntergerHanding.getInterger(var[1]),makeMap(var[2])));
+        }
+        return p;
+    }
+    public List<ChildProcessObject> search(String needSearch,int num){
+        List<String []> buff = searchDataByConditions(tableName,listField,listField[num] + "= ?",new String[]{needSearch},"","","");
+        List<ChildProcessObject> p = new LinkedList<ChildProcessObject>();
+        for (String[] var: buff) {
+            p.add(new ChildProcessObject(var[0], IntergerHanding.getInterger(var[1]),makeMap(var[2])));
+        }
+        return p;
+    }
+    public List<ChildProcessObject> search(String[] needSearch){
+        List<String []> buff = searchDataByConditions(tableName,listField,listField[0] + "= ?",needSearch,"","","");
+        List<ChildProcessObject> p = new LinkedList<ChildProcessObject>();
+        for (String[] var: buff) {
+            p.add(new ChildProcessObject(var[0], IntergerHanding.getInterger(var[1]),makeMap(var[2])));
+        }
+        return p;
+    }
+    public List<ChildProcessObject> search(String needSearch){
+        List<String []> buff = searchDataByConditions(tableName,listField,listField[0] + "= ?",new String[]{needSearch},"","","");
+        List<ChildProcessObject> p = new LinkedList<ChildProcessObject>();
+        for (String[] var: buff) {
+            p.add(new ChildProcessObject(var[0], IntergerHanding.getInterger(var[1]),makeMap(var[2])));
+        }
+        return p;
+    }
+
+    public List<ChildProcessObject> searchAll(){
+        List<String []> buff = searchDataByConditions(tableName,listField,null,null,"","","");
         List<ChildProcessObject> p = new LinkedList<ChildProcessObject>();
         for (String[] var: buff) {
             p.add(new ChildProcessObject(var[0], IntergerHanding.getInterger(var[1]),makeMap(var[2])));

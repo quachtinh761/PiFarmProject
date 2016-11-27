@@ -23,28 +23,32 @@ public class ParentSwineModel extends BaseModel{
     private String tableName = "PARENTSWINE";
     private static String[] listField = {"ID","dateImport","earNumber","dateCoordination", "coordinatorID","IDprocess","process","lsChildID","note"};
     //                                     0 ,  1           ,2              3                   4               5           6           7       8
-    private List<String []> params;
+    private List<String []> params = new LinkedList<>();
     private void makeparams(){
         String[] p = new String[2];
         p[0] = listField[0];
         p[1] = "TEXT(50) NOT NULL";
         params.add(p);
 
-        p[0] = listField[1];
-        p[1] = "TEXT(10) NOT NULL";
-        params.add(p);
+        String[] p1 = new String[2];
+        p1[0] = listField[1];
+        p1[1] = "TEXT(10) NOT NULL";
+        params.add(p1);
 
-        p[0] = listField[2];
-        p[1] = "TEXT(10) NOT NULL";
-        params.add(p);
+        String[] p2 = new String[2];
+        p2[0] = listField[2];
+        p2[1] = "TEXT(10) NOT NULL";
+        params.add(p2);
 
-        p[0] = listField[3];
-        p[1] = "TEXT(10)";
-        params.add(p);
+        String[] p3 = new String[2];
+        p3[0] = listField[3];
+        p3[1] = "TEXT(10)";
+        params.add(p3);
 
-        p[0] = listField[4];
-        p[1] = "TEXT(10)";
-        params.add(p);
+        String[] p4 = new String[2];
+        p4[0] = listField[4];
+        p4[1] = "TEXT(10)";
+        params.add(p4);
 
         p[0] = listField[5];
         p[1] = "TEXT(10) NOT NULL";

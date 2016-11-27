@@ -42,4 +42,7 @@ public class ChildProcessObject {
     public void setLsVaccine(Map<String, Integer> lsVaccine) {
         this.lsVaccine = lsVaccine;
     }
+    public boolean equal(ChildProcessObject a){
+        return a.getID() == ID;
+    }
 }
