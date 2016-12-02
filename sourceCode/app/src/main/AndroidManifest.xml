@@ -37,7 +37,8 @@
         <activity android:name=".activities.TestChildProModel" />
         <activity android:name=".activities.SyncData" />
         <activity android:name=".TestByVanThiAll" />
-        <activity android:name=".TestParentProcess"></activity>
+        <activity android:name=".TestParentProcess" />
+        <activity android:name=".TestParentSwine"></activity>
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@ import android.widget.Button;
 import vn.com.gant.pifarm.activities.TestChildProModel;
 
 public class TestByVanThiAll extends AppCompatActivity {
-    Button btnChildPro, btnParenPro;
+    Button btnChildPro, btnParenPro, btnParentSw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,7 @@ public class TestByVanThiAll extends AppCompatActivity {
         setContentView(R.layout.activity_test_by_van_thi_all);
         btnChildPro = (Button) findViewById(R.id.btnChildProcess);
         btnParenPro = (Button) findViewById(R.id.btnParentProcess);
+        btnParentSw = (Button) findViewById(R.id.btnParentSw);
 
         btnChildPro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +32,15 @@ public class TestByVanThiAll extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TestByVanThiAll.this, TestParentProcess.class);
+                TestByVanThiAll.this.startActivity(intent);
+                finish();
+            }
+        });
+
+        btnParentSw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TestByVanThiAll.this, TestParentSwine.class);
                 TestByVanThiAll.this.startActivity(intent);
                 finish();
             }

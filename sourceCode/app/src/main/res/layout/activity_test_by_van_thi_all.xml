@@ -25,4 +25,12 @@
         android:layout_below="@+id/btnChildProcess"
         android:layout_alignParentStart="true"
         android:id="@+id/btnParentProcess" />
+
+    <Button
+        android:text="Test Parent Swine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnParentSw"
+        android:layout_below="@+id/btnParentProcess"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

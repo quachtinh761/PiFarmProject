@@ -1,5 +1,7 @@
 package vn.com.gant.pifarm;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -19,6 +21,9 @@ import objects.ChildProcessObject;
 import objects.ParentProcessObject;
 
 public class TestParentProcess extends AppCompatActivity {
+
+    Context con;
+
     private EditText txtvID;
     private EditText txtvNday;
     private EditText txtvVaccine;
@@ -78,7 +83,7 @@ public class TestParentProcess extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (txtvID.getText().toString().equals("")) {
-                    txtData.setText("remove faild. Insert ID please.");
+                    txtData.setText("update faild. Insert ID please.");
                     return;
                 }
                 else{
@@ -123,6 +128,14 @@ public class TestParentProcess extends AppCompatActivity {
             }
             a += "-------------------------------\n";
         }
+
+        /*AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(con);
+        dlgAlert.setMessage(a);
+        dlgAlert.setTitle("Show");
+        dlgAlert.setPositiveButton("OK", null);
+        dlgAlert.setCancelable(true);
+        dlgAlert.create().show();*/
+
         txtData.setText(a);
     }
 }
