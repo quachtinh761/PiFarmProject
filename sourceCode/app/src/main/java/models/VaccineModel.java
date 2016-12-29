@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 import function.DateHanding;
-import objects.ParentSwineObject;
 import objects.VaccineObject;
 
 /**
@@ -36,7 +35,7 @@ public class VaccineModel extends BaseModel{
     private void makeparams(){
         String[] p = new String[2];
         p[0] = listField[0];
-        p[1] = "TEXT(50) NOT NULL";
+        p[1] = "TEXT(50) NOT NULL ";
         params.add(p);
         p[0] = listField[1];
         p[1] = "TEXT(10)";
