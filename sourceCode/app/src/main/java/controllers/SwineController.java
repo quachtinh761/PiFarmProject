@@ -202,4 +202,10 @@ public class SwineController extends AppCompatActivity {
         if (cardController.writeCard(cardObject)) return true;
         return false;
     }
+
+    public void autoRemoveSwineChild(){
+        //cần bàn để đưa ra cách xóa
+    }
+
+
 }
