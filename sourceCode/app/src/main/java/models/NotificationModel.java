@@ -75,15 +75,19 @@ public class NotificationModel extends BaseModel {
     public void add(List<NotificationObject> notificationObjects){
         for (NotificationObject var: notificationObjects) add(var);
     }
-
-    public void remove(List<String> cardID){
-        for (String var : cardID) {
-            remove(var);
-        }
-    }
     public void remove(String cardID){
         Map<String, String> map = new HashMap<String, String>();
         map.put(listField[4],cardID);
+        this.deleteRecord(tableName, map);
+        map.clear();
+    }
+    public void remove(List<NotificationObject> notificationObjects){
+        for ( NotificationObject not : notificationObjects) remove (not);
+    }
+
+    public void remove(NotificationObject notificationObject){
+        Map<String, String> map = new HashMap<String, String>();
+        map.put(listField[4], notificationObject.getCardID());
         this.deleteRecord(tableName, map);
         map.clear();
     }

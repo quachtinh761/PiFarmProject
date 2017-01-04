@@ -1,6 +1,7 @@
 package function;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -38,6 +39,15 @@ public class StringHanding {
             }
             return buf;
         } else return null;
+    }
+
+    public static List<String> getListStr(String str){
+        List<String> ls = new LinkedList<>();
+        String temp[] = getArrayStr(str);
+        for (int i = 0; i < temp.length; i++){
+            ls.add(temp[i]);
+        }
+        return ls;
     }
 
     //convert from array string to $abc#cde#cdc$

@@ -1,5 +1,6 @@
 package function;
 
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -84,5 +85,15 @@ public class DateHanding {
         p1 = getDate(date1);
         p2 = getDate(date2);
         return compareDate(p1,p2);
+    }
+    public static Date today(){
+        Date p = Calendar.getInstance().getTime();
+        return p;
+    }
+    public static int dayDistance(Date date1, Date date2){
+        long d1 = date1.getTime();
+        long d2 = date2.getTime();
+        if (d1 > d2) return (int) (d1 - d2) / (24 * 3600 * 1000);
+        else return (int) (d2 - d1) / (24 * 3600 * 1000);
     }
 }

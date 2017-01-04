@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import vn.com.gant.pifarm.SaveSharedPreference;
-import vn.com.gant.pifarm.TestByVanThiAll;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -16,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*if(SaveSharedPreference.getUserName(MainActivity.this).length() == 0){
+        if(SaveSharedPreference.getUserName(MainActivity.this).length() == 0){
             // create Intent
             Intent mainIntent = new Intent(MainActivity.this, Login.class);
 
@@ -30,10 +29,8 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.startActivity(mainIntent);
 
             finish();
-        }*/
-        Intent intent = new Intent(MainActivity.this, TestByVanThiAll.class);
-        MainActivity.this.startActivity(intent);
-        finish();
+        }
+
 
     }
 }

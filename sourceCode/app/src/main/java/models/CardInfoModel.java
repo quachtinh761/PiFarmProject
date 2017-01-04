@@ -3,16 +3,13 @@ package models;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import function.DateHanding;
-import function.IntergerHanding;
-import function.StringHanding;
-import objects.CardInfoObject;
+import objects.CardObject;
 
 /**
  * Created by Van Thi on 12/29/2016.
@@ -59,26 +56,26 @@ public class CardInfoModel extends BaseModel{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    private Map<String, String> makeMap(CardInfoObject cardInfoObject){
+    private Map<String, String> makeMap(CardObject cardInfoObject){
         Map<String, String> map = new HashMap<String, String>();
         map.put(listField[0],cardInfoObject.getID());
         map.put(listField[1], cardInfoObject.getEarNumber());
-        map.put(listField[2], DateHanding.getDateString(cardInfoObject.getCoordination()));
+        map.put(listField[2], DateHanding.getDateString(cardInfoObject.getDateCoordination()));
         map.put(listField[3], DateHanding.getDateString(cardInfoObject.getDateImport()));
         return map;
     }
 
-    public void add(List<CardInfoObject> cardInfoObjects){
-        for (CardInfoObject var : cardInfoObjects) add(var);
+    public void add(List<CardObject> cardInfoObjects){
+        for (CardObject var : cardInfoObjects) add(var);
     }
-    public void add(CardInfoObject cardInfoObject){
+    public void add(CardObject cardInfoObject){
         this.insert(tableName, makeMap(cardInfoObject));
     }
 
-    public void remove(List<CardInfoObject> cardInfoObjects){
-        for (CardInfoObject var : cardInfoObjects) remove(var);
+    public void remove(List<CardObject> cardInfoObjects){
+        for (CardObject var : cardInfoObjects) remove(var);
     }
-    public void remove(CardInfoObject cardInfoObject){
+    public void remove(CardObject cardInfoObject){
         Map<String, String> map = new HashMap<String,String>();
         map.put(listField[0], cardInfoObject.getID());
         this.deleteRecord(tableName,map);
@@ -92,53 +89,53 @@ public class CardInfoModel extends BaseModel{
         this.deleteRecord(tableName,map);
     }
 
-    public void update(List<CardInfoObject> cardInfoObjects){
-        for (CardInfoObject var : cardInfoObjects) update(var);
+    public void update(List<CardObject> cardInfoObjects){
+        for (CardObject var : cardInfoObjects) update(var);
     }
-    public void update(CardInfoObject cardInfoObject){
+    public void update(CardObject cardInfoObject){
         remove(cardInfoObject.getID());
         insert(tableName, makeMap(cardInfoObject));
     }
 
     //num is index of listField
-    public List<CardInfoObject> search(String[] needSearch,int num){
+    public List<CardObject> search(String[] needSearch,int num){
         List<String []> buff = searchDataByConditions(tableName,listField,listField[num] + "= ?",needSearch,"","","");
-        List<CardInfoObject> p = new LinkedList<CardInfoObject>();
+        List<CardObject> p = new LinkedList<CardObject>();
         for (String[] var: buff) {
-            p.add(new CardInfoObject(var[0], var[1], DateHanding.getDate(var[2]), DateHanding.getDate(var[3])));
+            p.add(new CardObject(var[0], var[1], DateHanding.getDate(var[2]), DateHanding.getDate(var[3])));
         }
         return p;
     }
-    public List<CardInfoObject> search(String needSearch,int num){
+    public List<CardObject> search(String needSearch,int num){
         List<String []> buff = searchDataByConditions(tableName,listField,listField[num] + "= ?",new String[] {needSearch},"","","");
-        List<CardInfoObject> p = new LinkedList<CardInfoObject>();
+        List<CardObject> p = new LinkedList<CardObject>();
         for (String[] var: buff) {
-            p.add(new CardInfoObject(var[0], var[1], DateHanding.getDate(var[2]), DateHanding.getDate(var[3])));
+            p.add(new CardObject(var[0], var[1], DateHanding.getDate(var[2]), DateHanding.getDate(var[3])));
         }
         return p;
     }
-    public List<CardInfoObject> search(String[] needSearch){
+    public List<CardObject> search(String[] needSearch){
         List<String []> buff = searchDataByConditions(tableName,listField,listField[0] + "= ?",needSearch,"","","");
-        List<CardInfoObject> p = new LinkedList<CardInfoObject>();
+        List<CardObject> p = new LinkedList<CardObject>();
         for (String[] var: buff) {
-            p.add(new CardInfoObject(var[0], var[1], DateHanding.getDate(var[2]), DateHanding.getDate(var[3])));
+            p.add(new CardObject(var[0], var[1], DateHanding.getDate(var[2]), DateHanding.getDate(var[3])));
         }
         return p;
     }
-    public List<CardInfoObject> search(String needSearch){
+    public List<CardObject> search(String needSearch){
         List<String []> buff = searchDataByConditions(tableName,listField,listField[0] + "= ?",new String[]{needSearch},"","","");
-        List<CardInfoObject> p = new LinkedList<CardInfoObject>();
+        List<CardObject> p = new LinkedList<CardObject>();
         for (String[] var: buff) {
-            p.add(new CardInfoObject(var[0], var[1], DateHanding.getDate(var[2]), DateHanding.getDate(var[3])));
+            p.add(new CardObject(var[0], var[1], DateHanding.getDate(var[2]), DateHanding.getDate(var[3])));
         }
         return p;
     }
 
-    public List<CardInfoObject> searchAll(){
+    public List<CardObject> searchAll(){
         List<String []> buff = searchDataByConditions(tableName,listField,null,null,"","","");
-        List<CardInfoObject> p = new LinkedList<CardInfoObject>();
+        List<CardObject> p = new LinkedList<CardObject>();
         for (String[] var: buff) {
-            p.add(new CardInfoObject(var[0], var[1], DateHanding.getDate(var[2]), DateHanding.getDate(var[3])));
+            p.add(new CardObject(var[0], var[1], DateHanding.getDate(var[2]), DateHanding.getDate(var[3])));
         }
         return p;
     }

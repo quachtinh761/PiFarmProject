@@ -20,20 +20,21 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static android.R.attr.data;
+import static android.R.attr.id;
 
 /**
  * Created by vanthi on 10/28/2016.
  */
 //List<String[]> is multi Arr, String[] must 2 element (field is 1st and value is second)
+    // Success
 public class PostMethod {
-    private String[] arrayData;
-    public PostMethod(String url, List<String[]> data) {
-        //build array String 0:url, then $field#value$
+    private String[] arrayData = new String[4];
+    //data type $vsdv#vsdvds#csdd$
+    public PostMethod(String url, String key, String idCard, String data){
         this.arrayData[0] = url;
-        String[] p = StringHanding.getArrayListStr(data);
-        for (int i = 0;i<p.length; i++){
-            arrayData[i+1] = p[i];
-        }
+        this.arrayData[1] = key;
+        this.arrayData[2] = idCard;
+        this.arrayData[3] = data;
     }
     public String send(){
         post async = new post();
@@ -53,13 +54,9 @@ public class PostMethod {
             try {
                 //add data
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(data.length - 1);
-                for (int i=1;i<data.length;i++){
-                    temp = StringHanding.getArrayStr(data[i]);
-                    nameValuePairs.add(new BasicNameValuePair(temp[0],temp[1]));
-                }
-                //nameValuePairs.add(new BasicNameValuePair("Key", data[1]));
-                //nameValuePairs.add(new BasicNameValuePair("ID", data[2]));
-                //nameValuePairs.add(new BasicNameValuePair("Data", data[3]));
+                nameValuePairs.add(new BasicNameValuePair("Key", data[1]));
+                nameValuePairs.add(new BasicNameValuePair("ID", data[2]));
+                nameValuePairs.add(new BasicNameValuePair("Data", data[3]));
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 //execute http post
                 HttpResponse response = httpclient.execute(httppost);

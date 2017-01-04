@@ -9,8 +9,9 @@ import java.util.Date;
 public class VaccineObject {
     private String ID,name,indication,dose,insertedBy,updatedBy;
     private Date insertedDate,updatedDate;
+    private boolean haveUse;
 
-    public VaccineObject(String ID, String name, String indication, String dose, String insertedBy, String updatedBy, Date insertedDate, Date updatedDate) {
+    public VaccineObject(String ID, String name, String indication, String dose, String insertedBy, String updatedBy, Date insertedDate, Date updatedDate, boolean haveUse) {
         this.ID = ID;
         this.name = name;
         this.indication = indication;
@@ -19,6 +20,15 @@ public class VaccineObject {
         this.updatedBy = updatedBy;
         this.insertedDate = insertedDate;
         this.updatedDate = updatedDate;
+        this.haveUse = haveUse;
+    }
+
+    public boolean isHaveUse() {
+        return haveUse;
+    }
+
+    public void setHaveUse(boolean haveUse) {
+        this.haveUse = haveUse;
     }
 
     public String getID() {

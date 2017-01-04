@@ -34,11 +34,7 @@
         <activity android:name=".activities.Statictis" />
         <activity android:name=".activities.Forum" />
         <activity android:name=".activities.ManageStaffs" />
-        <activity android:name=".activities.TestChildProModel" />
-        <activity android:name=".activities.SyncData" />
-        <activity android:name=".TestByVanThiAll" />
-        <activity android:name=".TestParentProcess" />
-        <activity android:name=".TestParentSwine"></activity>
+        <activity android:name=".activities.SyncData"/>
     </application>
 
 </manifest>
